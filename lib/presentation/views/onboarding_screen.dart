@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/views/authentication/sing_in_screen.dart';
 
 import 'home_screen.dart';
 
@@ -19,7 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void _goToHome(BuildContext context) {
     Navigator.of(
       context,
-    ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const SignInScreen()));
   }
 
   @override
