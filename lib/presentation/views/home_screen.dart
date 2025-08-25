@@ -5,49 +5,28 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: _buildBottomNavigationBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTopBar(),
-              const SizedBox(height: 20),
-              _buildSearchField(),
-              const SizedBox(height: 20),
-              _buildMedicalChecks(),
-              const SizedBox(height: 24),
-              _buildDoctorSpecialityHeader(),
-              const SizedBox(height: 16),
-              _buildSpecialityGrid(),
-              const SizedBox(height: 24),
-              _buildTopDoctorsHeader(),
-              const SizedBox(height: 12),
-              _buildDoctorTags(),
-            ],
-          ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildTopBar(),
+            const SizedBox(height: 20),
+            _buildSearchField(),
+            const SizedBox(height: 20),
+            _buildMedicalChecks(),
+            const SizedBox(height: 24),
+            _buildDoctorSpecialityHeader(),
+            const SizedBox(height: 16),
+            _buildSpecialityGrid(),
+            const SizedBox(height: 24),
+            _buildTopDoctorsHeader(),
+            const SizedBox(height: 12),
+            _buildDoctorTags(),
+          ],
         ),
       ),
-    );
-  }
-
-  BottomNavigationBar _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month),
-          label: "Appointments",
-        ),
-        BottomNavigationBarItem(icon: Icon(Icons.article), label: "History"),
-        BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: "Articles"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ],
     );
   }
 

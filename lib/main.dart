@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/views/home_screen.dart';
-import 'package:smart_med/presentation/views/onboarding_screen.dart';
+import 'package:beamer/beamer.dart';
+import 'package:smart_med/presentation/navigation/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,14 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+   late final routerDelegate = AppRouter.buildRouterDelegate();
+
+    return MaterialApp.router(
       title: 'SmartMed',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+      routerDelegate: routerDelegate,
+      routeInformationParser: BeamerParser(),
+      backButtonDispatcher: BeamerBackButtonDispatcher(delegate: routerDelegate),
     );
   }
 }
