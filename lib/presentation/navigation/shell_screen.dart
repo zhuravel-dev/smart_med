@@ -12,8 +12,9 @@ class ShellScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialTabIndex = _getShallTabIndex(routerState.queryParameters['tab']);
-    print("ShellScreen: Initial tab index: $initialTabIndex, Route: ${routerState.uri}");
+    final initialTabIndex = _getShallTabIndex(
+      routerState.queryParameters['tab'],
+    );
     final pageController = PageController(initialPage: initialTabIndex);
 
     return Scaffold(
@@ -25,15 +26,18 @@ class ShellScreen extends StatelessWidget {
           AppointmentScreen(),
           HistoryScreen(),
           HistoryScreen(),
-          Center(child: Text("Profile")),
+          HistoryScreen(),
         ],
       ),
-      bottomNavigationBar: SmartMedNavigationBar(key: navBarKey, initialTabIndex: initialTabIndex, pageController: pageController, )
+      bottomNavigationBar: SmartMedNavigationBar(
+        key: navBarKey,
+        initialTabIndex: initialTabIndex,
+        pageController: pageController,
+      ),
     );
   }
 
   int _getShallTabIndex(String? parameter) {
-    print("Tab parameter: $parameter");
     final index = AppRouter.shellTabs.indexWhere((tab) => parameter == tab);
     return index == -1 ? 0 : index;
   }

@@ -1,6 +1,9 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/navigation/app_router.dart';
 
 final navBarKey = GlobalKey<SmartMedNavigationBarState>();
+void goToHomeTab() => navBarKey.currentState?._goToTab(0);
 
 class SmartMedNavigationBar extends StatefulWidget {
   final int initialTabIndex;
@@ -50,8 +53,19 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
         ),
       ),
       currentIndex: currentIndex,
-      onTap: // TODO goToTab,
+      onTap: _goToTab,
     );
   }
 
+  void _goToTab(int index) {
+    final tab = AppRouter.shellTabs.elementAt(index);
+    Beamer.of(context).update(
+      configuration: RouteInformation(
+        uri: Uri(path: AppRouter.home(), queryParameters: {'tab': tab}),
+      ),
+      rebuild: false,
+    );
+    widget.pageController.jumpToPage(index);
+    setState(() => currentIndex = index);
+  }
 }

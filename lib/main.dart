@@ -1,5 +1,5 @@
-import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:beamer/beamer.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
 
 void main() {
@@ -11,23 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routerDelegate = AppRouter.buildRouterDelegate(initialTab: 'home');
+   late final routerDelegate = AppRouter.buildRouterDelegate();
 
     return MaterialApp.router(
       title: 'SmartMed',
       debugShowCheckedModeBanner: false,
       routerDelegate: routerDelegate,
       routeInformationParser: BeamerParser(),
-      routeInformationProvider: PlatformRouteInformationProvider(
-        initialRouteInformation: RouteInformation(location: AppRouter.home()),
-      ),
       backButtonDispatcher: BeamerBackButtonDispatcher(delegate: routerDelegate),
-      builder: (context, child) {
-        Future.microtask(() {
-          print("MaterialApp: ${Beamer.of(context).currentBeamLocation.state.routeInformation.location}");
-        });
-        return child ?? const SizedBox.shrink();
-      },
     );
   }
 }
