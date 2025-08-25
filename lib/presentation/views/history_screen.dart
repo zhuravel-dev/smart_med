@@ -6,7 +6,6 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _buildBottomNavigationBar(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -54,22 +53,6 @@ class HistoryScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  BottomNavigationBar _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      currentIndex: 2,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label: "Appointments"),
-        BottomNavigationBarItem(icon: Icon(Icons.article), label: "History"),
-        BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: "Articles"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ],
     );
   }
 }
@@ -128,7 +111,11 @@ class _HistoryCard extends StatelessWidget {
                   border: Border.all(color: Colors.blue, width: 2),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Icon(Icons.picture_as_pdf, size: 20, color: Colors.blue),
+                child: const Icon(
+                  Icons.picture_as_pdf,
+                  size: 20,
+                  color: Colors.blue,
+                ),
               ),
               const SizedBox(width: 12),
               const Expanded(

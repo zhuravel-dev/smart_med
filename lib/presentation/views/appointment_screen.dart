@@ -13,59 +13,36 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: _buildBottomNavigationBar(),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTopBar(),
-              const SizedBox(height: 20),
-              _buildTitle(),
-              const SizedBox(height: 16),
-              _buildFilters(),
-              const SizedBox(height: 20),
-              _buildAppointmentCard(
-                title: "Neurosurgery",
-                subtitleTop: "12 Doctors available",
-                subtitleBottom:
-                "Specialist Surgery Doctor\nSchedule your appointment",
-                time: "10:50 - 02:40",
-              ),
-              const SizedBox(height: 16),
-              _buildAppointmentCard(
-                title: "Vascular Surgery",
-                subtitleTop: "18 Doctors available",
-                subtitleBottom:
-                "Specialist Surgery Doctor\nSchedule your appointment",
-                time: "09:30 - 04:30",
-              ),
-            ],
-          ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildTopBar(),
+            const SizedBox(height: 20),
+            _buildTitle(),
+            const SizedBox(height: 16),
+            _buildFilters(),
+            const SizedBox(height: 20),
+            _buildAppointmentCard(
+              title: "Neurosurgery",
+              subtitleTop: "12 Doctors available",
+              subtitleBottom:
+                  "Specialist Surgery Doctor\nSchedule your appointment",
+              time: "10:50 - 02:40",
+            ),
+            const SizedBox(height: 16),
+            _buildAppointmentCard(
+              title: "Vascular Surgery",
+              subtitleTop: "18 Doctors available",
+              subtitleBottom:
+                  "Specialist Surgery Doctor\nSchedule your appointment",
+              time: "09:30 - 04:30",
+            ),
+          ],
         ),
       ),
-    );
-  }
-
-  BottomNavigationBar _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      currentIndex: _navIndex,
-      onTap: (i) => setState(() => _navIndex = i),
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month),
-          label: "Appointments",
-        ),
-        BottomNavigationBarItem(icon: Icon(Icons.article), label: "History"),
-        BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: "Articles"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ],
     );
   }
 
@@ -126,8 +103,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             selectedColor: Colors.transparent,
             labelStyle: TextStyle(
               color: _selectedFilter == i ? Colors.blue : Colors.black,
-              fontWeight:
-              _selectedFilter == i ? FontWeight.bold : FontWeight.normal,
+              fontWeight: _selectedFilter == i
+                  ? FontWeight.bold
+                  : FontWeight.normal,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -155,15 +133,20 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title,
-              style:
-              const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
           const SizedBox(height: 8),
-          Text(subtitleTop,
-              style: const TextStyle(fontSize: 14, color: Colors.black54)),
+          Text(
+            subtitleTop,
+            style: const TextStyle(fontSize: 14, color: Colors.black54),
+          ),
           const SizedBox(height: 8),
-          Text(subtitleBottom,
-              style: const TextStyle(fontSize: 13, color: Colors.black54)),
+          Text(
+            subtitleBottom,
+            style: const TextStyle(fontSize: 13, color: Colors.black54),
+          ),
           const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -183,11 +166,14 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 ),
                 child: const Text("Book Now"),
               ),
-              Text(time,
-                  style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue)),
+              Text(
+                time,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
             ],
           ),
         ],
