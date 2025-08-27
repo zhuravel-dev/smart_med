@@ -9,7 +9,6 @@ class AppointmentScreen extends StatefulWidget {
 
 class _AppointmentScreenState extends State<AppointmentScreen> {
   int _selectedFilter = 0;
-  int _navIndex = 0;
 
   @override
   Widget build(BuildContext context) {
