@@ -26,7 +26,6 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
     'Home': Icons.home,
     'Appointments': Icons.calendar_month,
     'History': Icons.article,
-    'Articles': Icons.menu_book,
     'Profile': Icons.person,
   };
 

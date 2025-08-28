@@ -17,8 +17,7 @@ class AppRouter {
     "home",
     "appointments",
     "history",
-    "articles",
-    "profile",
+    "account",
   ];
 
   // routes
@@ -29,8 +28,7 @@ class AppRouter {
   static String daily() => '/?tab=${shellTabs[0]}';
   static String appointments() => '/?tab=${shellTabs[1]}';
   static String history() => '/?tab=${shellTabs[2]}';
-  static String articles() => '/?tab=${shellTabs[3]}';
-  static String profile() => '/?tab=${shellTabs[4]}';
+  static String account() => '/?tab=${shellTabs[3]}';
 
   static BeamerDelegate buildRouterDelegate() {
     final String initialRoute = AppRouter.home();
