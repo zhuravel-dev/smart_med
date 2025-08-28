@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/views/account/payment_screen.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -16,7 +17,7 @@ class _AccountScreenState extends State<AccountScreen> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(
-          'Profile',
+          'Account',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -43,15 +44,11 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             child: Column(
               children: [
-                const CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage('https://via.placeholder.com/150/4285F4/FFFFFF?text=AA'),
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                    color: Colors.grey,
-                  ),
-                ),
+              const CircleAvatar(
+              radius: 24,
+              backgroundColor: Colors.transparent,
+              child: Icon(Icons.person, size: 28, color: Colors.blue),
+            ),
                 const SizedBox(height: 16),
                 const Text(
                   'User Name',
@@ -122,8 +119,8 @@ class _AccountScreenState extends State<AccountScreen> {
                     title: 'Payment',
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                     onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Payment Tapped')),
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const PaymentScreen()),
                       );
                     },
                   ),
