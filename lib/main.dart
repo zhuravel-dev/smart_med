@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
 
-void main() {
+import 'infra/initializations/initializer.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Initializer.initializeConfigurations();
+
   runApp(const MyApp());
 }
 

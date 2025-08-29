@@ -1,4 +1,4 @@
-import 'failures.dart';
+import 'package:smart_med/infra/helpers/failures.dart';
 
 class Result<T> {
   final T? data;
@@ -12,7 +12,7 @@ class Result<T> {
   bool get hasFailure => exception is Failure;
   String get errorMessage => exception?.toString() ?? '';
 
-  factory Result.ok(T data) => Result(data: data);
+  factory Result.correct(T data) => Result(data: data);
   factory Result.error(Object exception) => Result(exception: exception);
   factory Result.failure(Failure failure) => Result(exception: failure);
   factory Result.empty() => const Result();

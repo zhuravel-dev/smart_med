@@ -1,5 +1,5 @@
 class User {
-  final String id;
+  final int id;
   final String firstName;
   final String lastName;
   final String email;
@@ -10,4 +10,13 @@ class User {
     required this.lastName,
     required this.email,
   });
+
+  User copyWith({String? firstName, String? lastName, String? email}) {
+    return User(
+      id: id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+    );
+  }
 }
