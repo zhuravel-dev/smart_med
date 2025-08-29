@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/components/divider.dart';
 import 'package:smart_med/presentation/views/account/payment_screen.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -11,78 +12,23 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   bool _isDarkMode = false;
 
+  void _toggleDarkMode(bool value) {
+    setState(() => _isDarkMode = value);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Dark Mode ${_isDarkMode ? 'Enabled' : 'Disabled'}')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text(
-          'Account',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-        elevation: 0,
-      ),
+      appBar: _buildAppBar(),
       body: Column(
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-              const CircleAvatar(
-              radius: 24,
-              backgroundColor: Colors.transparent,
-              child: Icon(Icons.person, size: 28, color: Colors.blue),
-            ),
-                const SizedBox(height: 16),
-                const Text(
-                  'User Name',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  '+1 111 111 111',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Edit Profile Tapped')),
-                    );
-                  },
-                  icon: const Icon(Icons.edit, size: 18),
-                  label: const Text('Edit Profile'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  ),
-                ),
-              ],
-            ),
+          const ProfileHeader(
+            userName: "User Name",
+            phoneNumber: "+1 111 111 111",
           ),
           const SizedBox(height: 20),
 
@@ -103,20 +49,21 @@ class _AccountScreenState extends State<AccountScreen> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  _buildListTile(
+                  AccountOptionTile(
                     leadingIcon: Icons.notifications_outlined,
-                    title: 'Notification',
+                    title: "Notification",
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Notifications Tapped')),
+                        const SnackBar(content: Text("Notifications Tapped")),
                       );
                     },
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.payment_outlined,
-                    title: 'Payment',
+                    title: "Payment",
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                     onTap: () {
                       Navigator.of(context).push(
@@ -124,75 +71,69 @@ class _AccountScreenState extends State<AccountScreen> {
                       );
                     },
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.security_outlined,
-                    title: 'Security',
+                    title: "Security",
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Security Tapped')),
+                        const SnackBar(content: Text("Security Tapped")),
                       );
                     },
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.language_outlined,
-                    title: 'Language',
+                    title: "Language",
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: const [
-                        Text(
-                          'English (US)',
-                          style: TextStyle(color: Colors.grey),
-                        ),
+                        Text("English (US)", style: TextStyle(color: Colors.grey)),
                         Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                       ],
                     ),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Language Tapped')),
+                        const SnackBar(content: Text("Language Tapped")),
                       );
                     },
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.dark_mode_outlined,
-                    title: 'Dark Mode',
+                    title: "Dark Mode",
                     trailing: Switch(
                       value: _isDarkMode,
-                      onChanged: (value) {
-                        setState(() {
-                          _isDarkMode = value;
-                        });
-
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Dark Mode ${_isDarkMode ? 'Enabled' : 'Disabled'}')),
-                        );
-                      },
+                      onChanged: _toggleDarkMode,
                     ),
                     onTap: null,
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.help_outline,
-                    title: 'Help Center',
+                    title: "Help Center",
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Help Center Tapped')),
+                        const SnackBar(content: Text("Help Center Tapped")),
                       );
                     },
                   ),
-                  _buildDivider(),
-                  _buildListTile(
+                  const SmartMedDivider(),
+
+                  AccountOptionTile(
                     leadingIcon: Icons.logout_outlined,
-                    title: 'Logout',
+                    title: "Logout",
                     textColor: Colors.red,
                     trailing: const SizedBox(),
                     onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Logout Tapped')),
+                        const SnackBar(content: Text("Logout Tapped")),
                       );
                     },
                   ),
@@ -205,19 +146,112 @@ class _AccountScreenState extends State<AccountScreen> {
     );
   }
 
-  Widget _buildListTile({
-    required IconData leadingIcon,
-    required String title,
-    Widget? trailing,
-    Color? textColor,
-    required VoidCallback? onTap,
-  }) {
-    return ListTile(
-      leading: Icon(
-        leadingIcon,
-        color: Colors.blue,
-        size: 24,
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: const Text(
+        "Account",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
+      backgroundColor: Colors.blue,
+      elevation: 0,
+    );
+  }
+}
+
+class ProfileHeader extends StatelessWidget {
+  final String userName;
+  final String phoneNumber;
+
+  const ProfileHeader({
+    super.key,
+    required this.userName,
+    required this.phoneNumber,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          const CircleAvatar(
+            radius: 24,
+            backgroundColor: Colors.transparent,
+            child: Icon(Icons.person, size: 28, color: Colors.blue),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            userName,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            phoneNumber,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey[600],
+            ),
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Edit Profile Tapped")),
+              );
+            },
+            icon: const Icon(Icons.edit, size: 18),
+            label: const Text("Edit Profile"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AccountOptionTile extends StatelessWidget {
+  final IconData leadingIcon;
+  final String title;
+  final Widget? trailing;
+  final Color? textColor;
+  final VoidCallback? onTap;
+
+  const AccountOptionTile({
+    super.key,
+    required this.leadingIcon,
+    required this.title,
+    this.trailing,
+    this.textColor,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(leadingIcon, color: Colors.blue, size: 24),
       title: Text(
         title,
         style: TextStyle(
@@ -230,15 +264,6 @@ class _AccountScreenState extends State<AccountScreen> {
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
       dense: true,
-    );
-  }
-
-  Widget _buildDivider() {
-    return Divider(
-      height: 1,
-      thickness: 1,
-      color: Colors.grey[200],
-      indent: 60,
     );
   }
 }
