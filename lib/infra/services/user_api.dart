@@ -10,6 +10,7 @@ class UserApi implements IUserApi {
     firstName: 'John',
     lastName: 'Doe',
     email: 'john.doe@example.com',
+    phoneNumber: '+1 111 111 111',
   );
 
   bool throwException = false;
@@ -45,6 +46,7 @@ class UserApi implements IUserApi {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        phoneNumber: user.phoneNumber,
       );
       return Result.empty();
     } else {
@@ -58,7 +60,7 @@ class UserApi implements IUserApi {
     if (throwFailure) return Result.failure(Failure.serverFailure());
 
     if (_currentUser.id == userId) {
-      _currentUser = User(id: 1, firstName: '', lastName: '', email: '');
+      _currentUser = User(id: 1, firstName: '', lastName: '', email: '', phoneNumber: '');
       return Result.empty();
     } else {
       return Result.error(Exception('User not found'));

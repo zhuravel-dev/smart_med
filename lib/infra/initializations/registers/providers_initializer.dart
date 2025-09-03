@@ -7,7 +7,7 @@ abstract class ProvidersInitializer {
   static Future<List<BlocProvider>> initialize() async {
     final userCubit = UserCubit();
     GetIt.I.registerSingleton<UserCubit>(userCubit);
-    
+
     return [
       BlocProvider<UserCubit>(create: (BuildContext context) => UserCubit()),
     ];

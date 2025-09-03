@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:smart_med/domain/irepositories/iuser_repository.dart';
 import 'package:smart_med/domain/iservices/iuser_api.dart';
 
-class UserRepositoryImpl implements IUserRepository {
+class UserRepository implements IUserRepository {
   final _userApi = GetIt.I<IUserApi>();
 
   @override

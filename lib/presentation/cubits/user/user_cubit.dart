@@ -5,18 +5,18 @@ import 'package:smart_med/presentation/cubits/user/user_state.dart';
 import 'package:bloc/bloc.dart';
 
 class UserCubit extends Cubit<UserState> {
-  final IUserRepository _repository = GetIt.I<IUserRepository>();
+  final _userRepository = GetIt.I<IUserRepository>();
 
   UserCubit() : super(const UserState(isLoading: true));
 
   Future<void> loadUser() async {
     emit(state.copyWith(isLoading: true));
-    final user = await _repository.getUser();
+    final user = await _userRepository.getUser();
     emit(UserState(user: user, isLoading: false));
   }
 
   Future<void> updateUser(User user) async {
-    await _repository.updateUser(user);
+    await _userRepository.updateUser(user);
     await loadUser();
   }
 }
