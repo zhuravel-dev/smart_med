@@ -1,4 +1,4 @@
-import 'package:smart_med/domain/entities/doctor.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
 
 abstract class IDoctorRepository {
   Future<Doctor> getDoctor();

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
+import 'package:smart_med/presentation/components/doctor_card.dart';
+
+import '../../infra/mock/mock_doctors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,6 +28,8 @@ class HomeScreen extends StatelessWidget {
             _buildTopDoctorsHeader(),
             const SizedBox(height: 12),
             _buildDoctorTags(),
+            const SizedBox(height: 12),
+            _buildDoctorList(),
           ],
         ),
       ),
@@ -193,6 +199,18 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildDoctorList() {
+    return Column(
+      children: mockDoctors
+          .map((doctor) => Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: DoctorCard(doctor: doctor, onTap: () {}),
+      ))
+          .toList(),
+    );
+  }
+
 }
 
 class _SpecialityItem extends StatelessWidget {

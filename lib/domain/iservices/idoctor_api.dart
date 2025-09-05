@@ -1,4 +1,4 @@
-import 'package:smart_med/domain/entities/doctor.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/infra/helpers/result.dart';
 
 abstract class IDoctorApi {

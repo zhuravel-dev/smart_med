@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:smart_med/domain/entities/user.dart';
+import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/domain/iservices/iuser_api.dart';
 import 'package:smart_med/infra/helpers/result.dart';
 import 'package:smart_med/infra/helpers/failures.dart';

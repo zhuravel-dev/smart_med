@@ -1,4 +1,4 @@
-import 'package:smart_med/domain/entities/doctor.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:smart_med/domain/irepositories/idoctor_repository.dart';
 import 'package:smart_med/domain/iservices/idoctor_api.dart';
