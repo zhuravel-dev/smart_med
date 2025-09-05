@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/domain/entities/doctor_model.dart';
-import 'package:smart_med/presentation/components/doctor_card.dart';
-
-import '../../infra/mock/mock_doctors.dart';
+import 'package:smart_med/presentation/components/doctor_list.dart';
+import 'package:smart_med/presentation/components/medical_check_card.dart';
+import 'package:smart_med/presentation/components/search_field.dart';
+import 'package:smart_med/presentation/components/speciality_item.dart';
+import 'package:smart_med/presentation/components/tag_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,9 +18,9 @@ class HomeScreen extends StatelessWidget {
           children: [
             _buildTopBar(),
             const SizedBox(height: 20),
-            _buildSearchField(),
+            SearchField(),
             const SizedBox(height: 20),
-            _buildMedicalChecks(),
+            MedicalCheckCard(),
             const SizedBox(height: 24),
             _buildDoctorSpecialityHeader(),
             const SizedBox(height: 16),
@@ -27,9 +28,9 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 24),
             _buildTopDoctorsHeader(),
             const SizedBox(height: 12),
-            _buildDoctorTags(),
+            _buildTags(),
             const SizedBox(height: 12),
-            _buildDoctorList(),
+            DoctorList(context),
           ],
         ),
       ),
@@ -55,7 +56,7 @@ class HomeScreen extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            Text("Good Morning 👋", style: TextStyle(color: Colors.grey)),
+            Text("Good Morning", style: TextStyle(color: Colors.grey)),
             Text(
               "User Name",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -69,76 +70,6 @@ class HomeScreen extends StatelessWidget {
           icon: const Icon(Icons.notifications_none),
         ),
       ],
-    );
-  }
-
-  Widget _buildSearchField() {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: "Search",
-        prefixIcon: const Icon(Icons.search, color: Colors.blue),
-        filled: false,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMedicalChecks() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.transparent,
-        border: Border.all(color: Colors.blue, width: 2),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Medical Checks!",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  "Check your health condition regularly to minimize the incidence of diseases.",
-                  style: TextStyle(fontSize: 13, color: Colors.black54),
-                ),
-                const SizedBox(height: 12),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Colors.blue, width: 2),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 12,
-                    ),
-                  ),
-                  child: const Text("Check Now"),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-        ],
-      ),
     );
   }
 
@@ -163,14 +94,14 @@ class HomeScreen extends StatelessWidget {
       crossAxisSpacing: 16,
       mainAxisSpacing: 16,
       children: const [
-        _SpecialityItem(icon: Icons.local_hospital, label: "General"),
-        _SpecialityItem(icon: Icons.medical_services, label: "Dentist"),
-        _SpecialityItem(icon: Icons.remove_red_eye, label: "Ophthalm."),
-        _SpecialityItem(icon: Icons.fastfood, label: "Nutrition"),
-        _SpecialityItem(icon: Icons.psychology, label: "Neuro"),
-        _SpecialityItem(icon: Icons.child_care, label: "Pediatric"),
-        _SpecialityItem(icon: Icons.science, label: "Radiology"),
-        _SpecialityItem(icon: Icons.more_horiz, label: "More"),
+        SpecialityItem(icon: Icons.local_hospital, label: "General"),
+        SpecialityItem(icon: Icons.medical_services, label: "Dentist"),
+        SpecialityItem(icon: Icons.remove_red_eye, label: "Ophthalm."),
+        SpecialityItem(icon: Icons.fastfood, label: "Nutrition"),
+        SpecialityItem(icon: Icons.psychology, label: "Neuro"),
+        SpecialityItem(icon: Icons.child_care, label: "Pediatric"),
+        SpecialityItem(icon: Icons.science, label: "Radiology"),
+        SpecialityItem(icon: Icons.more_horiz, label: "More"),
       ],
     );
   }
@@ -188,72 +119,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDoctorTags() {
+  Widget _buildTags() {
     return Wrap(
       spacing: 8,
       children: [
-        _tags("All", selected: true),
-        _tags("General"),
-        _tags("Dentist"),
-        _tags("Nutritionist"),
+        TagItem("All", selected: true),
+        TagItem("General"),
+        TagItem("Dentist"),
+        TagItem("Nutritionist"),
       ],
     );
   }
-
-  Widget _buildDoctorList() {
-    return Column(
-      children: mockDoctors
-          .map((doctor) => Padding(
-        padding: const EdgeInsets.only(bottom: 12),
-        child: DoctorCard(doctor: doctor, onTap: () {}),
-      ))
-          .toList(),
-    );
-  }
-
-}
-
-class _SpecialityItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-
-  const _SpecialityItem({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(color: Colors.blue, width: 2),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, color: Colors.blue, size: 28),
-        ),
-        const SizedBox(height: 6),
-        Text(label, style: const TextStyle(fontSize: 12)),
-      ],
-    );
-  }
-}
-
-Widget _tags(String text, {bool selected = false}) {
-  return ChoiceChip(
-    label: Text(text),
-    selected: selected,
-    backgroundColor: Colors.transparent,
-    selectedColor: Colors.transparent,
-    labelStyle: TextStyle(
-      color: selected ? Colors.blue : Colors.black,
-      fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-    ),
-    onSelected: (_) {},
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-      side: const BorderSide(color: Colors.blue, width: 2),
-    ),
-  );
 }
