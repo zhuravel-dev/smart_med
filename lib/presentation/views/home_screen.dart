@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card/time_tile.dart';
+import 'package:smart_med/presentation/components/appointment_card.dart';
 import 'package:smart_med/presentation/components/custom_app_bar.dart';
 import 'package:smart_med/presentation/components/doctor_speciality_header.dart';
 import 'package:smart_med/presentation/components/medical_check_card.dart';
@@ -16,10 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String selectedTime = "";
-
-  final List<String> times = ["08:30", "09:30", "10:30", "11:30"];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,28 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             TagsRow(),
             const SizedBox(height: 12),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: times.map((time) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: TimeTile(
-                    time: time,
-                    isSelected: selectedTime == time,
-                    onTap: () {
-                      setState(() {
-                        selectedTime = time;
-                      });
-                    },
-                  ),
-                );
-              }).toList(),
-            ),
+            AppointmentCard(),
           ],
         ),
+
       ),
     );
+
+
   }
 }
-

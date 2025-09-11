@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/components/appointment_card/custom_row_of_days.dart';
+import 'package:smart_med/presentation/components/appointment_card/time_tile_row.dart';
+import 'appointment_card/book_appointment_button.dart';
 
-class SelectDateWidget extends StatefulWidget {
+class AppointmentCard extends StatefulWidget {
+  const AppointmentCard({super.key});
+
   @override
-  _SelectDateWidgetState createState() => _SelectDateWidgetState();
+  _AppointmentCardState createState() => _AppointmentCardState();
 }
 
-class _SelectDateWidgetState extends State<SelectDateWidget> {
-  DateTime _focusedDay = DateTime.now();
+class _AppointmentCardState extends State<AppointmentCard> {
   DateTime? _selectedDay;
   String _selectedTime = '09:30';
+
+  final List<String> times = ["08:30", "09:30", "10:30", "11:30"];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
+      width: double.infinity,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.blue.withOpacity(0.3),
-            blurRadius: 10,
-            offset: Offset(0, 5),
+            color: Colors.blue.withOpacity(0.1),
+            blurRadius: 20,
+            offset: Offset(0, -2),
           ),
         ],
       ),
@@ -30,79 +39,40 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 16),
-            child: Text(
-              'Select Date',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
+          Text(
+            'Choose available slot:',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
           ),
 
           SizedBox(height: 16),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildTimeChip('08:30'),
-              _buildTimeChip('09:30', isSelected: true),
-              _buildTimeChip('10:30'),
-              _buildTimeChip('11:30'),
-            ],
+          CustomRowOfDays(),
+
+          SizedBox(height: 16),
+
+          TimeTileRow(
+            times: times,
+            selectedTime: _selectedTime,
+            onTimeSelected: (time) {
+              setState(() {
+                _selectedTime = time;
+              });
+            },
           ),
-          SizedBox(height: 20),
+
+          SizedBox(height: 28),
 
           Center(
-            child: ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      '${_selectedDay?.toString().split(' ')[0]} $_selectedTime',
-                    ),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: Text('Book Appointment', style: TextStyle(fontSize: 16)),
+            child: BookAppointmentButton(
+              selectedDay: _selectedDay,
+              selectedTime: _selectedTime,
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildTimeChip(String time, {bool isSelected = false}) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedTime = time;
-        });
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.grey[200],
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: isSelected ? Colors.blue : Colors.grey),
-        ),
-        child: Text(
-          time,
-          style: TextStyle(
-            color: isSelected ? Colors.white : Colors.black87,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-          ),
-        ),
       ),
     );
   }

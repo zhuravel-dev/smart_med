@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TimeTile extends StatelessWidget {
+class TimeTileItem extends StatelessWidget {
   final String time;
   final bool isSelected;
   final VoidCallback onTap;
 
-  const TimeTile({
-    Key? key,
+  const TimeTileItem({
+    super.key,
     required this.time,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
