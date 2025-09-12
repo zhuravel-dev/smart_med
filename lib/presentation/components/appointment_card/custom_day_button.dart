@@ -29,9 +29,9 @@ class CustomDayButton extends StatelessWidget {
           children: [
             Text(
               DateFormat.E().format(day),
-              style: const TextStyle(
-                color: Colors.black54,
-                fontWeight: FontWeight.bold,
+              style: TextStyle(
+                color: isSelected ? Colors.black : Colors.black54,
+                fontWeight: FontWeight.normal,
               ),
             ),
             const SizedBox(height: 6),
@@ -64,4 +64,3 @@ class CustomDayButton extends StatelessWidget {
     );
   }
 }
-

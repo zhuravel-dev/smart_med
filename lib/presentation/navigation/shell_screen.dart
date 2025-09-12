@@ -6,6 +6,7 @@ import 'package:smart_med/presentation/views/account/account_screen.dart';
 import 'package:smart_med/presentation/views/home_screen.dart';
 import 'package:smart_med/presentation/views/appointment_screen.dart' hide AccountScreen;
 import 'package:smart_med/presentation/views/history_screen.dart';
+import 'package:smart_med/presentation/views/personal_appointment_screen.dart';
 
 class ShellScreen extends StatelessWidget {
   final BeamState routerState;
@@ -24,7 +25,8 @@ class ShellScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const HomeScreen(),
-          AppointmentScreen(),
+          PersonalAppointmentScreen(),
+          //AppointmentScreen(),
           const HistoryScreen(),
           AccountScreen(),
         ],

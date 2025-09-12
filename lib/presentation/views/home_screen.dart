@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card.dart';
+import 'package:smart_med/presentation/components/appointment_card/appointment_card_item.dart';
 import 'package:smart_med/presentation/components/custom_app_bar.dart';
 import 'package:smart_med/presentation/components/doctor_speciality_header.dart';
 import 'package:smart_med/presentation/components/medical_check_card.dart';
@@ -38,13 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             TagsRow(),
             const SizedBox(height: 12),
-            AppointmentCard(),
           ],
         ),
-
       ),
     );
-
-
   }
 }
