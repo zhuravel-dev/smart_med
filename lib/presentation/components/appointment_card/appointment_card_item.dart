@@ -24,11 +24,12 @@ class _AppointmentCardState extends State<AppointmentCard> {
       left: 0,
       right: 0,
       child: Container(
+        height: MediaQuery.sizeOf(context).height * 0.34,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+            topLeft: Radius.circular(54),
+            topRight: Radius.circular(54),
           ),
           boxShadow: [
             BoxShadow(
@@ -39,21 +40,22 @@ class _AppointmentCardState extends State<AppointmentCard> {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SelectAvailableSlotItem(),
+                  SelectAvailableSlotTextItem(),
                   MonthItem(),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               CustomRowOfDays(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 8),
               TimeTileRow(
                 times: times,
                 selectedTime: _selectedTime,
@@ -63,7 +65,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                   });
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               BookAppointmentButton(),
             ],
           ),

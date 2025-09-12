@@ -39,7 +39,7 @@ class CustomDayButton extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: isSelected ? Colors.blue : Colors.white,
+                color: isSelected ?Color(0xFF4285F4) : Colors.white,
                 shape: BoxShape.circle,
                 boxShadow: const [
                   BoxShadow(

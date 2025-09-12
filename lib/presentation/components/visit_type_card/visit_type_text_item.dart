@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-Widget SelectAvailableSlotTextItem() {
+Widget VisitTypeTextItem() {
   return const Text(
-    'Select available slot',
+    'Visit Type',
     style: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w600,
-      color: Colors.black87,
+      color: Colors.white,
     ),
   );
 }
