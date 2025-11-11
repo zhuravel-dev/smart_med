@@ -1,5 +1,5 @@
 import 'package:smart_med/domain/entities/doctor_model.dart';
-import 'package:smart_med/domain/entities/visit_history.dart';
+import 'package:smart_med/domain/entities/visit_history_model.dart';
 
 final mockVisitHistory = [
   VisitHistory(

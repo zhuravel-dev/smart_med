@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/domain/entities/consultation_type.dart';
+import 'package:smart_med/infra/helpers/consultation_type.dart';
 import 'package:smart_med/presentation/components/visit_type_card/consultation_tile.dart';
 import 'package:smart_med/presentation/components/visit_type_card/custom_plus_button.dart';
 import 'package:smart_med/presentation/components/visit_type_card/visit_type_text_item.dart';
