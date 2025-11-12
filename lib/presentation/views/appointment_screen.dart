@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/doctor_list.dart';
+import 'package:smart_med/presentation/components/list_of_doctors.dart';
 
 class AppointmentScreen extends StatefulWidget {
   const AppointmentScreen({super.key});
@@ -14,26 +14,31 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Appointment Screen",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Appointment Screen",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            const SizedBox(height: 12),
-            DoctorList(context),
+          ),
+          _buildFilters(),
+          const Expanded(
+            child: ListOfDoctors(),
 
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
-
   Widget _buildFilters() {
-    final items = ["All", "Specialist", "Surgery", "Treatment"];
+    final items = ["All", "Therapists", "Cardiologists", "Neurologists"];
     return Wrap(
       spacing: 8,
       children: [
