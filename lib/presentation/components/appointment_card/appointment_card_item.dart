@@ -24,12 +24,12 @@ class _AppointmentCardState extends State<AppointmentCard> {
       left: 0,
       right: 0,
       child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.34,
+        height: MediaQuery.sizeOf(context).height * 0.38,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(54),
-            topRight: Radius.circular(54),
+            topLeft: Radius.circular(48),
+            topRight: Radius.circular(48),
           ),
           boxShadow: [
             BoxShadow(
@@ -45,7 +45,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 12),
+              const SizedBox(height: 18),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,7 +65,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                   });
                 },
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               BookAppointmentButton(),
             ],
           ),

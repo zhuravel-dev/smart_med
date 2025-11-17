@@ -14,7 +14,7 @@ class BookAppointmentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 48,
+      height: 50,
       child: ElevatedButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -29,14 +29,14 @@ class BookAppointmentButton extends StatelessWidget {
           backgroundColor: Color(0xFF4285F4),
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: BorderRadius.circular(24),
           ),
           elevation: 0,
         ),
         child: const Text(
           'Book Appointment',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),

@@ -18,11 +18,11 @@ class CustomDayButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 48,
+        width: 52,
         margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
         decoration: BoxDecoration(
           color: isSelected ? Colors.grey[350] : Colors.grey[200],
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,9 +37,9 @@ class CustomDayButton extends StatelessWidget {
             const SizedBox(height: 6),
             Container(
               width: 40,
-              height: 40,
+              height: 36,
               decoration: BoxDecoration(
-                color: isSelected ?Color(0xFF4285F4) : Colors.white,
+                color: isSelected ? Color(0xFF4285F4) : Colors.white,
                 shape: BoxShape.circle,
                 boxShadow: const [
                   BoxShadow(
