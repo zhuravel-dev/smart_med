@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/core/presentation_strings.dart';
 
 class CreditCardWidget extends StatelessWidget {
   final String bankName;
@@ -81,7 +82,7 @@ class CreditCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Expired Date',
+                    PresentationStrings.defaultExpiryTitle,
                     style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 10),
                   ),
                   const SizedBox(height: 4),
