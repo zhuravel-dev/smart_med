@@ -1,4 +1,4 @@
-import 'package:smart_med/domain/entities/user.dart';
+import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/infra/helpers/result.dart';
 
 abstract class IUserApi {

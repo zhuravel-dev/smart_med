@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/components/appointment_card/appointment_card_item.dart';
+import 'package:smart_med/presentation/components/custom_app_bar.dart';
+import 'package:smart_med/presentation/components/doctor_speciality_header.dart';
+import 'package:smart_med/presentation/components/medical_check_card.dart';
+import 'package:smart_med/presentation/components/search_field.dart';
+import 'package:smart_med/presentation/components/speciality_grid.dart';
+import 'package:smart_med/presentation/components/tags_row.dart';
+import 'package:smart_med/presentation/components/top_doctors_header.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -11,231 +24,23 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildTopBar(),
+            CustomAppBar(),
             const SizedBox(height: 20),
-            _buildSearchField(),
+            SearchField(),
             const SizedBox(height: 20),
-            _buildMedicalChecks(),
+            MedicalCheckCard(),
             const SizedBox(height: 24),
-            _buildDoctorSpecialityHeader(),
+            DoctorSpecialityHeader(),
             const SizedBox(height: 16),
-            _buildSpecialityGrid(),
+            SpecialityGrid(),
             const SizedBox(height: 24),
-            _buildTopDoctorsHeader(),
+            TopDoctorsHeader(),
             const SizedBox(height: 12),
-            _buildDoctorTags(),
+            TagsRow(),
+            const SizedBox(height: 12),
           ],
         ),
       ),
     );
   }
-
-  Widget _buildTopBar() {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: Colors.blue, width: 2),
-          ),
-          child: const CircleAvatar(
-            radius: 24,
-            backgroundColor: Colors.transparent,
-            child: Icon(Icons.person, size: 28, color: Colors.blue),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text("Good Morning 👋", style: TextStyle(color: Colors.grey)),
-            Text(
-              "User Name",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        const Spacer(),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.notifications_none),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSearchField() {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: "Search",
-        prefixIcon: const Icon(Icons.search, color: Colors.blue),
-        filled: false,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.blue, width: 2),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMedicalChecks() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.transparent,
-        border: Border.all(color: Colors.blue, width: 2),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Medical Checks!",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  "Check your health condition regularly to minimize the incidence of diseases.",
-                  style: TextStyle(fontSize: 13, color: Colors.black54),
-                ),
-                const SizedBox(height: 12),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Colors.blue, width: 2),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 12,
-                    ),
-                  ),
-                  child: const Text("Check Now"),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 12),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDoctorSpecialityHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text(
-          "Doctor Speciality",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        Text("See All", style: TextStyle(color: Colors.blue, fontSize: 14)),
-      ],
-    );
-  }
-
-  Widget _buildSpecialityGrid() {
-    return GridView.count(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 4,
-      crossAxisSpacing: 16,
-      mainAxisSpacing: 16,
-      children: const [
-        _SpecialityItem(icon: Icons.local_hospital, label: "General"),
-        _SpecialityItem(icon: Icons.medical_services, label: "Dentist"),
-        _SpecialityItem(icon: Icons.remove_red_eye, label: "Ophthalm."),
-        _SpecialityItem(icon: Icons.fastfood, label: "Nutrition"),
-        _SpecialityItem(icon: Icons.psychology, label: "Neuro"),
-        _SpecialityItem(icon: Icons.child_care, label: "Pediatric"),
-        _SpecialityItem(icon: Icons.science, label: "Radiology"),
-        _SpecialityItem(icon: Icons.more_horiz, label: "More"),
-      ],
-    );
-  }
-
-  Widget _buildTopDoctorsHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text(
-          "Top Doctors",
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        Text("See All", style: TextStyle(color: Colors.blue, fontSize: 14)),
-      ],
-    );
-  }
-
-  Widget _buildDoctorTags() {
-    return Wrap(
-      spacing: 8,
-      children: [
-        _tags("All", selected: true),
-        _tags("General"),
-        _tags("Dentist"),
-        _tags("Nutritionist"),
-      ],
-    );
-  }
-}
-
-class _SpecialityItem extends StatelessWidget {
-  final IconData icon;
-  final String label;
-
-  const _SpecialityItem({required this.icon, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(color: Colors.blue, width: 2),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, color: Colors.blue, size: 28),
-        ),
-        const SizedBox(height: 6),
-        Text(label, style: const TextStyle(fontSize: 12)),
-      ],
-    );
-  }
-}
-
-Widget _tags(String text, {bool selected = false}) {
-  return ChoiceChip(
-    label: Text(text),
-    selected: selected,
-    backgroundColor: Colors.transparent,
-    selectedColor: Colors.transparent,
-    labelStyle: TextStyle(
-      color: selected ? Colors.blue : Colors.black,
-      fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-    ),
-    onSelected: (_) {},
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-      side: const BorderSide(color: Colors.blue, width: 2),
-    ),
-  );
 }

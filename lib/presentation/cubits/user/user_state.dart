@@ -1,4 +1,4 @@
-import 'package:smart_med/domain/entities/user.dart';
+import 'package:smart_med/domain/entities/user_model.dart';
 
 class UserState {
   final User? user;

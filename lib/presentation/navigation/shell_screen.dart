@@ -4,7 +4,7 @@ import 'package:smart_med/presentation/navigation/app_router.dart';
 import 'package:smart_med/presentation/navigation/smart_med_navigation_bar.dart';
 import 'package:smart_med/presentation/views/account/account_screen.dart';
 import 'package:smart_med/presentation/views/home_screen.dart';
-import 'package:smart_med/presentation/views/appointment_screen.dart' hide AccountScreen;
+import 'package:smart_med/presentation/views/appointment_screen.dart';
 import 'package:smart_med/presentation/views/history_screen.dart';
 
 class ShellScreen extends StatelessWidget {
@@ -24,6 +24,7 @@ class ShellScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const HomeScreen(),
+          //PersonalAppointmentScreen(),
           AppointmentScreen(),
           const HistoryScreen(),
           AccountScreen(),

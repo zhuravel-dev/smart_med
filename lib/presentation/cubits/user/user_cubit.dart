@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:smart_med/domain/entities/user.dart';
+import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/domain/irepositories/iuser_repository.dart';
 import 'package:smart_med/presentation/cubits/user/user_state.dart';
 import 'package:bloc/bloc.dart';
