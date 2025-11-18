@@ -4,7 +4,12 @@ import 'package:smart_med/presentation/components/custom_back_button.dart';
 import 'package:smart_med/presentation/components/send_message_item.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
-  const CreateAppointmentScreen({super.key});
+  final int doctorId;
+
+  const CreateAppointmentScreen({
+    super.key,
+    required this.doctorId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +17,9 @@ class CreateAppointmentScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-
           Positioned.fill(
             child: Image.asset(
-              'assets/images/doctors/1.jpg',
+              'assets/images/doctors/$doctorId.jpg',
               fit: BoxFit.cover,
             ),
           ),

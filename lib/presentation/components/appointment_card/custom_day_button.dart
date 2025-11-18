@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class CustomDayButton extends StatelessWidget {
   final DateTime day;
@@ -28,7 +27,8 @@ class CustomDayButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              DateFormat.E().format(day),
+              '',
+              //DateFormat.E().format(day),
               style: TextStyle(
                 color: isSelected ? Colors.black : Colors.black54,
                 fontWeight: FontWeight.normal,
