@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/components/appointment_card/appointment_card_item.dart';
-import 'package:smart_med/presentation/components/custom_back_button.dart';
+import 'package:smart_med/presentation/components/buttons/custom_back_button.dart';
 import 'package:smart_med/presentation/components/send_message_item.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class CreateAppointmentScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomBackButton(context),
+                  customBackButton(onTap: () => Navigator.pop(context)),
                   SendMessageItem(),
                 ],
               ),

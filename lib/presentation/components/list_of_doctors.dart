@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/infra/mock/mock_doctors.dart';
+import 'package:smart_med/infra/mocks/mock_doctors.dart';
 import 'package:smart_med/presentation/doctor_card/doctor_card_small.dart';
 import 'package:smart_med/presentation/views/create_appointment_screen.dart';
 
