@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/components/list_of_doctors.dart';
+import 'package:smart_med/presentation/components/custom_app_bar.dart';
 
 class AppointmentScreen extends StatefulWidget {
   const AppointmentScreen({super.key});
@@ -9,58 +10,21 @@ class AppointmentScreen extends StatefulWidget {
 }
 
 class _AppointmentScreenState extends State<AppointmentScreen> {
-  int _selectedFilter = 0;
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: CustomAppBar(title: "Appointments"),
+      body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Appointment Screen",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            //child: _buildFilters(),
           ),
-          _buildFilters(),
-          const Expanded(
-            child: ListOfDoctors(),
-
-          ),
+          //const SizedBox(height: 8),
+          Expanded(child: ListOfDoctors()),
         ],
       ),
-    );
-  }
-  Widget _buildFilters() {
-    final items = ["All", "Therapists", "Cardiologists", "Neurologists"];
-    return Wrap(
-      spacing: 8,
-      children: [
-        for (int i = 0; i < items.length; i++)
-          ChoiceChip(
-            label: Text(items[i]),
-            selected: _selectedFilter == i,
-            onSelected: (_) => setState(() => _selectedFilter = i),
-            backgroundColor: Colors.transparent,
-            selectedColor: Colors.transparent,
-            labelStyle: TextStyle(
-              color: _selectedFilter == i ? Colors.blue : Colors.black,
-              fontWeight: _selectedFilter == i
-                  ? FontWeight.bold
-                  : FontWeight.normal,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: const BorderSide(color: Colors.blue, width: 2),
-            ),
-          ),
-      ],
     );
   }
 }

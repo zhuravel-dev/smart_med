@@ -13,13 +13,13 @@ class ListOfDoctors extends StatelessWidget {
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       itemCount: mockDoctors.length,
       itemBuilder: (context, index) {
         final doctor = mockDoctors[index];
 
         return Padding(
-          padding: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.only(bottom: 8),
           child: DoctorCardSmall(
             doctor: doctor,
             onTap: () {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/buttons/custom_back_button.dart';
+import 'package:smart_med/presentation/components/custom_app_bar.dart';
 import 'package:smart_med/presentation/core/presentation_strings.dart';
 import 'package:smart_med/presentation/views/payment/add_credit_card_button.dart';
 import 'package:smart_med/presentation/views/payment/payment_card.dart';
@@ -20,17 +20,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
+
+      appBar: CustomAppBar(
+        title: PresentationStrings.paymentMethod,
+        showBackButton: true,
         backgroundColor: Colors.grey[200],
-        elevation: 0,
-        leadingWidth: 40,
-        leading: customBackButton(onTap: () => Navigator.pop(context)),
-        title: const Text(
-          PresentationStrings.paymentMethod,
-          style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: false,
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
         child: Column(

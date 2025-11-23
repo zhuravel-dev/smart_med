@@ -1,7 +1,7 @@
 import 'package:smart_med/domain/entities/user_model.dart';
 
 final mockUsers = [
-  User(
+  UserModel(
     id: 1,
     firstName: "John",
     lastName: "Doe",
@@ -10,6 +10,4 @@ final mockUsers = [
   ),
 ];
 
-final userAvatar = {
-  1: "assets/images/user/1.jpg",
-};
+final userAvatar = {1: "assets/images/user/1.jpg"};

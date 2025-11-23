@@ -7,7 +7,7 @@ class UserRepository implements IUserRepository {
   final _userApi = GetIt.I<IUserApi>();
 
   @override
-  Future<User> getUser() async {
+  Future<UserModel> getUser() async {
     final result = await _userApi.getCurrentUser();
     if (result.hasData && result.data != null) {
       return result.data!;
@@ -18,7 +18,7 @@ class UserRepository implements IUserRepository {
   }
 
   @override
-  Future<void> updateUser(User user) async {
+  Future<void> updateUser(UserModel user) async {
     final result = await _userApi.updateUser(user);
     if (result.hasError) {
       throw result.exception!;

@@ -5,7 +5,7 @@ import 'package:smart_med/infra/helpers/result.dart';
 import 'package:smart_med/infra/helpers/failures.dart';
 
 class UserApi implements IUserApi {
-  User _currentUser = User(
+  UserModel _currentUser = UserModel(
     id: 1,
     firstName: 'John',
     lastName: 'Doe',
@@ -17,7 +17,7 @@ class UserApi implements IUserApi {
   bool throwFailure = false;
 
   @override
-  Future<Result<User>> getCurrentUser() async {
+  Future<Result<UserModel>> getCurrentUser() async {
     if (throwException) return Result.error(Exception('Simulated exception'));
     if (throwFailure) return Result.failure(Failure.serverFailure());
 
@@ -25,7 +25,7 @@ class UserApi implements IUserApi {
   }
 
   @override
-  Future<Result<User>> getUserById(int userId) async {
+  Future<Result<UserModel>> getUserById(int userId) async {
     if (throwException) return Result.error(Exception('Simulated exception'));
     if (throwFailure) return Result.failure(Failure.serverFailure());
 
@@ -37,7 +37,7 @@ class UserApi implements IUserApi {
   }
 
   @override
-  Future<Result<void>> updateUser(User user) async {
+  Future<Result<void>> updateUser(UserModel user) async {
     if (throwException) return Result.error(Exception('Simulated exception'));
     if (throwFailure) return Result.failure(Failure.serverFailure());
 
@@ -60,7 +60,7 @@ class UserApi implements IUserApi {
     if (throwFailure) return Result.failure(Failure.serverFailure());
 
     if (_currentUser.id == userId) {
-      _currentUser = User(id: 1, firstName: '', lastName: '', email: '', phoneNumber: '');
+      _currentUser = UserModel(id: 1, firstName: '', lastName: '', email: '', phoneNumber: '');
       return Result.empty();
     } else {
       return Result.error(Exception('User not found'));
