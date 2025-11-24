@@ -15,7 +15,7 @@ class UserCubit extends Cubit<UserState> {
     emit(UserState(user: user, isLoading: false));
   }
 
-  Future<void> updateUser(User user) async {
+  Future<void> updateUser(UserModel user) async {
     await _userRepository.updateUser(user);
     await loadUser();
   }

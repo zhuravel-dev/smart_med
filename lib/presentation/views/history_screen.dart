@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/infra/mock/mock_visit_history.dart';
+import 'package:smart_med/infra/mocks/mock_visit_history.dart';
 import 'package:smart_med/presentation/components/visit_history_card.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -15,11 +15,7 @@ class HistoryScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.blue),
         title: const Text(
           "Visit History",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
         ),
         actions: [
           IconButton(
@@ -37,8 +33,7 @@ class HistoryScreen extends StatelessWidget {
                   (visit) => Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: VisitHistoryCard(
-                      doctor:
-                          "Dr. ${visit.doctor.firstName} ${visit.doctor.lastName}",
+                      doctor: "Dr. ${visit.doctor.firstName} ${visit.doctor.lastName}",
                       speciality: visit.doctor.specialization,
                       datetime: visit.datetime,
                       highlighted: visit.highlighted,

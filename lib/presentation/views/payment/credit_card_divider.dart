@@ -11,8 +11,8 @@ class CreditCardDivider extends StatelessWidget {
   const CreditCardDivider({
     super.key,
     this.text = PresentationStrings.or,
-    this.lineColor = const Color(0xFFC8C7C7),
-    this.textColor = const Color(0xFF9E9E9E),
+    this.lineColor = const Color(0xFFACABAB),
+    this.textColor = const Color(0xFF757474),
     this.fontSize = 14,
     this.horizontalPadding = 16,
   });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/components/custom_app_bar.dart';
 import 'package:smart_med/presentation/core/presentation_strings.dart';
 import 'package:smart_med/presentation/views/payment/add_credit_card_button.dart';
 import 'package:smart_med/presentation/views/payment/payment_card.dart';
@@ -18,20 +19,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          PresentationStrings.paymentMethod,
-          style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: false,
+      backgroundColor: Colors.grey[200],
+
+      appBar: CustomAppBar(
+        title: PresentationStrings.paymentMethod,
+        showBackButton: true,
+        backgroundColor: Colors.grey[200],
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
         child: Column(

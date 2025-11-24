@@ -1,11 +1,11 @@
-class User {
+class UserModel {
   final int id;
   final String firstName;
   final String lastName;
   final String email;
   final String phoneNumber;
 
-  User({
+  UserModel({
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -13,13 +13,8 @@ class User {
     required this.phoneNumber,
   });
 
-  User copyWith({
-    String? firstName,
-    String? lastName,
-    String? email,
-    String? phoneNumber,
-  }) {
-    return User(
+  UserModel copyWith({String? firstName, String? lastName, String? email, String? phoneNumber}) {
+    return UserModel(
       id: id,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
