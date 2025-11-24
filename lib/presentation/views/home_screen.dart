@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           children: [
+            const SizedBox(height: 6),
             GreetingHeader(
               user: mockUsers[0],
               onNotificationTap: () => print("Notifications tapped"),

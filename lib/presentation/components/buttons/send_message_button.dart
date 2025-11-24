@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget customBackButton({required VoidCallback onTap, double size = 42.0}) {
+Widget sendMessageButton({required VoidCallback onTap, double size = 42.0}) {
   return SizedBox(
     width: size,
     height: size,
@@ -14,9 +14,19 @@ Widget customBackButton({required VoidCallback onTap, double size = 42.0}) {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
-            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(2, 0))],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 8,
+                offset: Offset(2, 0),
+              ),
+            ],
           ),
-          child: Icon(Icons.arrow_back_ios_new_rounded, size: size * 0.45, color: Colors.black87),
+          child: Icon(
+            Icons.message,
+            size: size * 0.45,
+            color: Colors.black87,
+          ),
         ),
       ),
     ),

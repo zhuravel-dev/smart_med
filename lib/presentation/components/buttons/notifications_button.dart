@@ -14,7 +14,7 @@ Widget notificationButton({VoidCallback? onTap}) {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
-            blurRadius: 6,
+            blurRadius: 8,
             offset: const Offset(0, 3),
           ),
         ],

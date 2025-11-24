@@ -10,4 +10,4 @@ final mockUsers = [
   ),
 ];
 
-final userAvatar = {1: "assets/images/user/1.jpg"};
+final userAvatar = {1: "assets/images/user/1.png"};

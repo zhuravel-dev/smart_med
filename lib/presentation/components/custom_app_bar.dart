@@ -27,36 +27,37 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: Container(
         height: 62,
-        color: backgroundColor,
+        color: backgroundColor ?? Colors.grey[200],
         padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Row(
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            leading ??
-                (showBackButton
-                    ? customBackButton(onTap: () => Navigator.pop(context))
-                    : const SizedBox(width: 12)),
-            const SizedBox(width: 12),
-
-            Expanded(
+            Center(
               child:
                   titleWidget ??
                   (title != null
                       ? Text(
                           title!,
-                          textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         )
                       : const SizedBox()),
             ),
-
-            const SizedBox(width: 12),
-
-            Row(mainAxisSize: MainAxisSize.min, children: actions ?? []),
-            const SizedBox(width: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                leading ??
+                    (showBackButton
+                        ? customBackButton(onTap: () => Navigator.pop(context))
+                        : const SizedBox(width: 44)),
+                Row(mainAxisSize: MainAxisSize.min, children: actions ?? []),
+              ],
+            ),
           ],
         ),
       ),

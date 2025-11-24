@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/infra/mocks/mock_user.dart';
 import 'package:smart_med/presentation/components/buttons/notifications_button.dart';
+import 'package:smart_med/presentation/components/custom_circle_avatar.dart';
 
 class GreetingHeader extends StatelessWidget {
   final UserModel user;
@@ -16,7 +17,7 @@ class GreetingHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            CircleAvatar(radius: 24, backgroundImage: AssetImage(userAvatar[user.id]!)),
+            CustomCircleAvatar(imagePath: userAvatar[user.id]!),
             const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

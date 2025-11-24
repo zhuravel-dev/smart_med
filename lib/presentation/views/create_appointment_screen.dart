@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/components/appointment_card/appointment_card_item.dart';
 import 'package:smart_med/presentation/components/buttons/custom_back_button.dart';
-import 'package:smart_med/presentation/components/send_message_item.dart';
+import 'package:smart_med/presentation/components/custom_app_bar.dart';
+import 'package:smart_med/presentation/components/buttons/send_message_button.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
   final int doctorId;
@@ -23,20 +24,18 @@ class CreateAppointmentScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  customBackButton(onTap: () => Navigator.pop(context)),
-                  SendMessageItem(),
-                ],
-              ),
+            child: CustomAppBar(
+              backgroundColor: Colors.transparent,
+              showBackButton: false,
+              leading: customBackButton(onTap: () => Navigator.pop(context)),
+              actions: [
+                sendMessageButton(onTap: () { print("SendMessageButton tapped"); }),
+              ],
+              title: null,
+              titleWidget: null,
             ),
           ),
-
           Align(
             alignment: Alignment.bottomCenter,
             child: AppointmentCard(),
