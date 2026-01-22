@@ -1,6 +1,7 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
 
 class App extends StatefulWidget {
@@ -43,6 +44,9 @@ class _AppState extends State<App> with WidgetsBindingObserver {
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.montserratTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
         builder: (context, child) {
           return ScrollConfiguration(
@@ -58,10 +62,10 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 class _RemoveGlowEffectBehavior extends ScrollBehavior {
   @override
   Widget buildOverscrollIndicator(
-    BuildContext context,
-    Widget child,
-    ScrollableDetails details,
-  ) {
+      BuildContext context,
+      Widget child,
+      ScrollableDetails details,
+      ) {
     return child;
   }
 }
