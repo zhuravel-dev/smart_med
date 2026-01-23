@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/infra/constants.dart';
+import 'package:smart_med/presentation/components/row_of_doctors_avatars.dart';
 
 class MainCard extends StatelessWidget {
   final Color color;
@@ -7,6 +7,8 @@ class MainCard extends StatelessWidget {
   final String time;
   final int doctorsAvailable;
   final VoidCallback? onTap;
+  final bool isLight;
+  final String avatarImage;
 
   const MainCard({
     super.key,
@@ -14,7 +16,9 @@ class MainCard extends StatelessWidget {
     required this.doctorType,
     required this.time,
     required this.doctorsAvailable,
+    required this.avatarImage,
     this.onTap,
+    this.isLight = false,
   });
 
   @override
@@ -32,6 +36,11 @@ class MainCard extends StatelessWidget {
     final avatarRadius = screenWidth * 0.055;
     final avatarOffset = avatarRadius * 1.4;
 
+    final textColor = isLight ? Colors.black87 : Colors.white;
+    final secondaryTextColor = isLight ? Colors.black54 : Colors.white.withOpacity(0.8);
+    final chipColor = isLight ? Colors.grey.withOpacity(0.15) : Colors.white.withOpacity(0.25);
+    final borderColor = isLight ? Colors.white : Colors.white;
+
     return Container(
       width: double.infinity,
       margin: EdgeInsets.symmetric(
@@ -47,8 +56,22 @@ class MainCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: borderColor,
+                    width: 1,
+                  ),
+                ),
+                child: CircleAvatar(
+                  radius: avatarRadius * 0.9,
+                  backgroundImage: AssetImage(avatarImage),
+                  backgroundColor: Colors.grey[300],
+                ),
+              ),
+              SizedBox(width: padding * 0.5),
               Expanded(
                 child: Text(
                   doctorType,
@@ -57,7 +80,7 @@ class MainCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: titleSize,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: textColor,
                   ),
                 ),
               ),
@@ -68,14 +91,14 @@ class MainCard extends StatelessWidget {
                   vertical: padding * 0.4,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.25),
+                  color: chipColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   time,
                   style: TextStyle(
                     fontSize: subtitleSize,
-                    color: Colors.white,
+                    color: secondaryTextColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -87,71 +110,21 @@ class MainCard extends StatelessWidget {
 
           Row(
             children: [
-              SizedBox(
-                height: avatarRadius * 2,
-                width: avatarOffset *
-                    (defaultAvatars.length.clamp(1, 4)),
-                child: Stack(
-                  children: [
-                    for (int i = 0;
-                    i < defaultAvatars.length && i < 3;
-                    i++)
-                      Positioned(
-                        left: i * avatarOffset,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: avatarRadius,
-                            backgroundImage:
-                            AssetImage(defaultAvatars[i]),
-                            backgroundColor: Colors.grey[300],
-                          ),
-                        ),
-                      ),
-                    if (defaultAvatars.length > 3)
-                      Positioned(
-                        left: 3 * avatarOffset,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: avatarRadius,
-                            backgroundColor: Colors.white,
-                            child: Text(
-                              "+${defaultAvatars.length - 3}",
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: avatarRadius * 0.6,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
+              RowOfDoctorsAvatars(
+                isLight: isLight,
+                avatarRadius: avatarRadius,
+                avatarOffset: avatarOffset,
+                borderColor: borderColor,
+                textColor: textColor,
               ),
-
-              SizedBox(width: padding * 0.6),
-
+              SizedBox(width: padding),
               Expanded(
                 child: Text(
                   "$doctorsAvailable Doctor${doctorsAvailable != 1 ? 's' : ''} available",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: secondaryTextColor,
                     fontSize: subtitleSize,
                   ),
                 ),
@@ -161,7 +134,6 @@ class MainCard extends StatelessWidget {
 
           SizedBox(height: padding),
 
-          /// ─── FOOTER ──────────────────────────────────────────────
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -173,7 +145,7 @@ class MainCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: titleSize,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: textColor,
                   ),
                 ),
               ),
@@ -184,12 +156,12 @@ class MainCard extends StatelessWidget {
                   width: avatarRadius * 2.2,
                   height: avatarRadius * 2.2,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.25),
+                    color: chipColor,
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_forward,
-                    color: Colors.white,
+                    color: textColor,
                   ),
                 ),
               ),

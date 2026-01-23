@@ -23,9 +23,6 @@ Widget MakeAppointmentTitle() {
               height: 1.1,
             ),
         ),
-
-        const SizedBox(height: 30),
-
       ],
     ),
   );

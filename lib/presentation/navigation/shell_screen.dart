@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
 import 'package:smart_med/presentation/navigation/smart_med_navigation_bar.dart';
 import 'package:smart_med/presentation/views/account/account_screen.dart';
-import 'package:smart_med/presentation/views/home_screen.dart';
-import 'package:smart_med/presentation/views/appointment_screen.dart';
-import 'package:smart_med/presentation/views/history_screen.dart';
+import 'package:smart_med/presentation/views/screens/home_screen.dart';
+import 'package:smart_med/presentation/views/screens/appointment_screen.dart';
+import 'package:smart_med/presentation/views/screens/history_screen.dart';
 
 class ShellScreen extends StatelessWidget {
   final BeamState routerState;
