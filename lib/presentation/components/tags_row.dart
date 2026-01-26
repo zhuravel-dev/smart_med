@@ -5,14 +5,14 @@ Widget TagsRow() {
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
-      children: [
+      children: const [
         TagItem("All", selected: true),
-        SizedBox(width: 12),
+        SizedBox(width: 14),
         TagItem("Specialist"),
-        SizedBox(width: 12),
-        TagItem("Surgeon"),
-        SizedBox(width: 12),
+        SizedBox(width: 14),
         TagItem("Treatment"),
+        SizedBox(width: 14),
+        TagItem("Surgeon"),
       ],
     ),
   );

@@ -5,7 +5,6 @@ class RowOfDoctorsAvatars extends StatelessWidget {
   final bool isLight;
   final double avatarRadius;
   final double avatarOffset;
-  final Color borderColor;
   final Color textColor;
 
   const RowOfDoctorsAvatars({
@@ -13,7 +12,6 @@ class RowOfDoctorsAvatars extends StatelessWidget {
     required this.isLight,
     required this.avatarRadius,
     required this.avatarOffset,
-    required this.borderColor,
     required this.textColor,
   });
 
@@ -33,10 +31,7 @@ class RowOfDoctorsAvatars extends StatelessWidget {
               left: i * avatarOffset,
               top: 0,
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: borderColor, width: 1),
-                ),
+                decoration: BoxDecoration(shape: BoxShape.circle),
                 child: CircleAvatar(
                   radius: avatarRadius,
                   backgroundImage: AssetImage(defaultAvatarsNeurosurgery[i]),
@@ -49,10 +44,7 @@ class RowOfDoctorsAvatars extends StatelessWidget {
               left: 3 * avatarOffset,
               top: 0,
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: borderColor, width: 1),
-                ),
+                decoration: BoxDecoration(shape: BoxShape.circle),
                 child: CircleAvatar(
                   radius: avatarRadius,
                   backgroundColor: isLight ? Colors.grey[200] : Colors.white,

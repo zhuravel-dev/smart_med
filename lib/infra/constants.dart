@@ -5,10 +5,14 @@ const List<String> defaultAvatarsNeurosurgery = [
   'assets/images/doctors/neurosurgery/4.jpg',
 ];
 
-const List<String> neurosurgery = [
-  'assets/images/neurosurgery.jpg',
+const List<String> surgery = [
+  'assets/images/surgery.png',
 ];
 
 const List<String> cardiology = [
   'assets/images/cardiology.png',
+];
+
+const List<String> dentistry = [
+  'assets/images/dentistry.png',
 ];

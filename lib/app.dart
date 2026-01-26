@@ -37,22 +37,15 @@ class _AppState extends State<App> with WidgetsBindingObserver {
         title: 'SmartMed',
         routerDelegate: routerDelegate,
         routeInformationParser: BeamerParser(),
-        backButtonDispatcher: BeamerBackButtonDispatcher(
-          delegate: routerDelegate,
-        ),
+        backButtonDispatcher: BeamerBackButtonDispatcher(delegate: routerDelegate),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          textTheme: GoogleFonts.montserratTextTheme(
-            Theme.of(context).textTheme,
-          ),
+          textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
         ),
         builder: (context, child) {
-          return ScrollConfiguration(
-            behavior: _RemoveGlowEffectBehavior(),
-            child: child!,
-          );
+          return ScrollConfiguration(behavior: _RemoveGlowEffectBehavior(), child: child!);
         },
       ),
     );
@@ -61,11 +54,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
 class _RemoveGlowEffectBehavior extends ScrollBehavior {
   @override
-  Widget buildOverscrollIndicator(
-      BuildContext context,
-      Widget child,
-      ScrollableDetails details,
-      ) {
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     return child;
   }
 }

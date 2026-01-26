@@ -11,14 +11,14 @@ Widget MakeAppointmentTitle() {
         Text(
           "Make an",
           style: GoogleFonts.montserrat(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.w500,
           ),
         ),
         Text(
           "Appointment",
             style: GoogleFonts.montserrat(
-              fontSize: 32,
+              fontSize: 30,
               fontWeight: FontWeight.w700,
               height: 1.1,
             ),

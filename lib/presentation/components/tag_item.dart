@@ -5,36 +5,34 @@ class TagItem extends StatelessWidget {
   final bool selected;
   final VoidCallback? onTap;
 
-  const TagItem(
-      this.text, {
-        super.key,
-        this.selected = false,
-        this.onTap,
-      });
+  const TagItem(this.text, {super.key, this.selected = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
-          color: selected ? Colors.black : Colors.white,
+          color: selected ? const Color(0xFF0F172A) : Colors.white,
           borderRadius: BorderRadius.circular(30),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          boxShadow: selected
+              ? []
+              : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
         ),
         child: Text(
           text,
           style: TextStyle(
-            color: selected ? Colors.white : Colors.black87,
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w500,
+            color: selected ? Colors.white : const Color(0xFF6B7280),
           ),
         ),
       ),
