@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:smart_med/presentation/core/presentation_strings.dart';
+import 'package:smart_med/presentation/core/payment_screen_strings.dart';
 
 class AddCreditCardButton extends StatelessWidget {
   final VoidCallback onTap;

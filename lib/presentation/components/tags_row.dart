@@ -8,11 +8,11 @@ Widget TagsRow() {
       children: const [
         TagItem("All", selected: true),
         SizedBox(width: 14),
-        TagItem("Specialist"),
+        TagItem("Cardiology"),
         SizedBox(width: 14),
-        TagItem("Treatment"),
+        TagItem("Dentistry"),
         SizedBox(width: 14),
-        TagItem("Surgeon"),
+        TagItem("Surgery"),
       ],
     ),
   );

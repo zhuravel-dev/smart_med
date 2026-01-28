@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/core/presentation_strings.dart';
+import 'package:smart_med/presentation/core/payment_screen_strings.dart';
 
 class CreditCardDivider extends StatelessWidget {
   final String text;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/components/main_card/time_chip.dart';
-import 'package:smart_med/presentation/components/row_of_doctors_avatars.dart';
+import 'package:smart_med/presentation/components/main_card/row_of_doctors_avatars.dart';
 
 class MainCard extends StatelessWidget {
   final Color color;
@@ -9,7 +9,9 @@ class MainCard extends StatelessWidget {
   final int doctorsAvailable;
   final VoidCallback? onTap;
   final bool isLight;
-  final String avatarImage;
+  final String categoryImage;
+  final List<String> doctorAvatars;
+  final int additionalCount;
 
   const MainCard({
     super.key,
@@ -17,9 +19,11 @@ class MainCard extends StatelessWidget {
     required this.doctorType,
     required this.time,
     required this.doctorsAvailable,
-    required this.avatarImage,
+    required this.categoryImage,
+    required this.doctorAvatars,
     this.onTap,
     this.isLight = false,
+    required this.additionalCount,
   });
 
   @override
@@ -29,16 +33,16 @@ class MainCard extends StatelessWidget {
 
     final horizontalMargin = screenWidth * 0.01;
 
-    final avatarRadius = screenWidth * 0.055;
-    final avatarOffset = avatarRadius * 1.4;
+    final avatarRadius = screenWidth * 0.06;
+    final avatarOffset = avatarRadius * 1.5;
 
     final textColor = isLight ? Colors.black87 : Colors.white;
     final chipColor = isLight ? Colors.grey.withOpacity(0.15) : Colors.white.withOpacity(0.25);
 
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 12, horizontal: horizontalMargin),
-      padding: EdgeInsets.all(20),
+      margin: EdgeInsets.symmetric(vertical: 6, horizontal: horizontalMargin),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
       decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(38)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +53,7 @@ class MainCard extends StatelessWidget {
                 decoration: BoxDecoration(shape: BoxShape.circle),
                 child: CircleAvatar(
                   radius: avatarRadius * 0.9,
-                  backgroundImage: AssetImage(avatarImage),
+                  backgroundImage: AssetImage(categoryImage),
                   backgroundColor: Colors.grey[300],
                 ),
               ),
@@ -67,7 +71,7 @@ class MainCard extends StatelessWidget {
             ],
           ),
 
-          SizedBox(height: 26),
+          SizedBox(height: 30),
 
           Row(
             children: [
@@ -76,30 +80,20 @@ class MainCard extends StatelessWidget {
                 avatarRadius: avatarRadius,
                 avatarOffset: avatarOffset,
                 textColor: textColor,
+                avatars: doctorAvatars,
+                additionalCount: additionalCount,
               ),
-              SizedBox(width: 26),
-              /*Expanded(
-                child: Text(
-                  "$doctorsAvailable Doctor${doctorsAvailable != 1 ? 's' : ''} available",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: secondaryTextColor,
-                    fontSize: 12,
-                  ),
-                ),
-              ),*/
             ],
           ),
 
-          SizedBox(height: 20),
+          SizedBox(height: 16),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: Text(
-                  "$doctorsAvailable Doctor${doctorsAvailable != 1 ? 's' : ''} available",
+                  "$doctorsAvailable Doctor${doctorsAvailable != 1 ? 's' : ''} available today",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: textColor, fontSize: 18),
