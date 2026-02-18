@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/core/payment_screen_strings.dart';
+import 'package:smart_med_strings/smart_med_strings.dart';
 import 'payment_option_tile.dart';
 
 class PaymentOptionsList extends StatelessWidget {
   final String selectedPayment;
   final Function(String) onSelectPayment;
 
-  PaymentOptionsList({
-    super.key,
-    required this.selectedPayment,
-    required this.onSelectPayment,
-  });
+  PaymentOptionsList({super.key, required this.selectedPayment, required this.onSelectPayment});
 
   final List<Map<String, dynamic>> _options = [
     {
-      'id': 'paypal',
-      'icon': 'P',
-      'iconColor': Color(0xFF003087),
-      'title': PresentationStrings.paypalTitle,
+      'id': PaymentStrings.paymentIdPaypal,
+      'icon': PaymentStrings.paypalIcon,
+      'iconColor': const Color(0xFF003087),
+      'title': PaymentStrings.paypalTitle,
     },
     {
-      'id': 'stripe',
-      'icon': 'S',
-      'iconColor': Color(0xFF635BFF),
-      'title': PresentationStrings.stripeTitle,
+      'id': PaymentStrings.paymentIdStripe,
+      'icon': PaymentStrings.stripeIcon,
+      'iconColor': const Color(0xFF635BFF),
+      'title': PaymentStrings.stripeTitle,
     },
   ];
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/infra/constants.dart';
 import 'package:smart_med/presentation/components/main_card/main_card.dart';
+import 'package:smart_med_images/smart_med_images.dart';
 
 class MainCardsRow extends StatelessWidget {
   const MainCardsRow({super.key});
@@ -15,32 +15,34 @@ class MainCardsRow extends StatelessWidget {
           doctorType: "Dentistry",
           time: "10:20 AM - 4:40 PM",
           doctorsAvailable: 8,
-          categoryImage: dentistry.first,
+          categoryImage: SmartMedImages.dentistry,
           onTap: () {},
-          doctorAvatars: defaultAvatarsDentistry,
+          doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
           additionalCount: 3,
         ),
+        SizedBox(height: 8),
         MainCard(
           color: Colors.white,
           isLight: true,
           doctorType: "Surgery",
           time: "9:00 AM - 5:30 PM",
           doctorsAvailable: 7,
-          categoryImage: surgery.first,
+          categoryImage: SmartMedImages.surgery,
           onTap: () {},
-          doctorAvatars: defaultAvatarsSurgery,
+          doctorAvatars: SmartMedImages.defaultAvatarsSurgery,
           additionalCount: 2,
         ),
-        MainCard(
+        SizedBox(height: 8),
+       /* MainCard(
           color: const Color(0xff2F6BFF),
           doctorType: "Cardiology",
           time: "10:20 AM - 4:40 PM",
           doctorsAvailable: 12,
-          categoryImage: cardiology.first,
+          categoryImage: SmartMedImages.cardiology,
           onTap: () {},
-          doctorAvatars: defaultAvatarsSurgery,
+          doctorAvatars: SmartMedImages.defaultAvatarsSurgery,
           additionalCount: 6,
-        ),
+        ),*/
       ],
     );
   }

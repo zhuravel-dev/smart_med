@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/core/payment_screen_strings.dart';
+import 'package:smart_med/presentation/views/payment/mastercard_logo.dart';
+import 'package:smart_med_strings/smart_med_strings.dart';
 
 class CreditCardWidget extends StatelessWidget {
   final String bankName;
@@ -63,7 +64,7 @@ class CreditCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Card Holder Name',
+                    PaymentStrings.cardHolderLabel,
                     style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 10),
                   ),
                   const SizedBox(height: 4),
@@ -82,7 +83,7 @@ class CreditCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    PresentationStrings.defaultExpiryTitle,
+                    PaymentStrings.defaultExpiryTitle,
                     style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 10),
                   ),
                   const SizedBox(height: 4),
@@ -96,8 +97,7 @@ class CreditCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
-
-              _buildMastercardLogo(),
+              MastercardLogo(),
             ],
           ),
         ],
@@ -115,35 +115,5 @@ class CreditCardWidget extends StatelessWidget {
       formatted += cleaned[i];
     }
     return formatted;
-  }
-
-  Widget _buildMastercardLogo() {
-    return SizedBox(
-      width: 50,
-      height: 32,
-      child: Stack(
-        children: [
-          Positioned(
-            left: 0,
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(color: Colors.red.withOpacity(0.9), shape: BoxShape.circle),
-            ),
-          ),
-          Positioned(
-            left: 18,
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(
-                color: Colors.amber.withOpacity(0.9),
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }

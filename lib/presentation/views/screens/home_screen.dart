@@ -21,13 +21,13 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           children: [
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             HomeGreetingHeader(),
             const SizedBox(height: 20),
             MakeAppointmentTitle(),
-            const SizedBox(height: 16),
+            const SizedBox(height: 24),
             TagsRow(),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             MainCardsRow(),
           ],
         ),
