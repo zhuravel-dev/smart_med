@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:smart_med/presentation/core/presentation_strings.dart';
+import 'package:smart_med_strings/smart_med_strings.dart';
 
 class AddCreditCardButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -12,7 +12,7 @@ class AddCreditCardButton extends StatelessWidget {
   const AddCreditCardButton({
     super.key,
     required this.onTap,
-    this.text = PresentationStrings.creditCard,
+    this.text = PaymentStrings.addCreditCard,
     this.borderColor = const Color(0xFF8EA7D1),
     this.textColor = const Color(0xFF5B8DEF),
     this.iconColor = const Color(0xFF5B8DEF),

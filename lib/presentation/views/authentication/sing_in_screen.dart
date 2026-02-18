@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/views/authentication/sign_up_screen.dart';
-import 'package:smart_med/presentation/views/home_screen.dart';
+import 'package:smart_med/presentation/views/screens/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});

@@ -19,9 +19,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            //child: _buildFilters(),
           ),
-          //const SizedBox(height: 8),
           Expanded(child: ListOfDoctors()),
         ],
       ),

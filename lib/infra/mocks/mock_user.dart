@@ -1,4 +1,5 @@
 import 'package:smart_med/domain/entities/user_model.dart';
+import 'package:smart_med_images/smart_med_images.dart';
 
 final mockUsers = [
   UserModel(
@@ -10,4 +11,4 @@ final mockUsers = [
   ),
 ];
 
-final userAvatar = {1: "assets/images/user/1.png"};
+final userAvatar = {1: SmartMedImages.user};

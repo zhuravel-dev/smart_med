@@ -1,9 +1,6 @@
-import 'package:beamer/beamer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/navigation/app_router.dart';
-
-final navBarKey = GlobalKey<SmartMedNavigationBarState>();
-void goToHomeTab() => navBarKey.currentState?._goToTab(0);
+import 'package:flutter_svg/svg.dart';
 
 class SmartMedNavigationBar extends StatefulWidget {
   final int initialTabIndex;
@@ -20,51 +17,114 @@ class SmartMedNavigationBar extends StatefulWidget {
 }
 
 class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
-  late int currentIndex;
-
-  static const Map<String, IconData> buttonsMap = {
-    'Home': Icons.home,
-    'Appointments': Icons.calendar_month,
-    'History': Icons.article,
-    'Account': Icons.person,
-  };
+  late int _currentIndex;
 
   @override
   void initState() {
     super.initState();
-    currentIndex = widget.initialTabIndex;
+    _currentIndex = widget.initialTabIndex;
+  }
+
+  void jumpToTab(int index) {
+    setState(() => _currentIndex = index);
+    widget.pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.grey,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      items: List.generate(
-        buttonsMap.length,
-        (index) => BottomNavigationBarItem(
-          icon: SizedBox(
-            height: 23,
-            child: Icon(buttonsMap.values.elementAt(index)),
-          ),
-          label: buttonsMap.keys.elementAt(index),
-        ),
+    return Container(
+      height: 84,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0F0F10),
+        borderRadius: BorderRadius.circular(40),
       ),
-      currentIndex: currentIndex,
-      onTap: _goToTab,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _NavItem(
+            icon: SvgPicture.asset(
+              'assets/icons/house.svg',
+              color: Colors.white,
+              width: 24,
+              height: 24,
+            ),
+            index: 0,
+            currentIndex: _currentIndex,
+            onTap: jumpToTab,
+          ),
+
+          _NavItem(
+            icon: SvgPicture.asset(
+              'assets/icons/search.svg',
+              color: Colors.white,
+              width: 24,
+              height: 24,
+            ),
+            index: 1,
+            currentIndex: _currentIndex,
+            onTap: jumpToTab,
+          ),
+
+          _NavItem(
+            icon: SvgPicture.asset(
+              'assets/icons/calendar.svg',
+              color: Colors.white,
+              width: 24,
+              height: 24,
+            ),
+            index: 2,
+            currentIndex: _currentIndex,
+            onTap: jumpToTab,
+          ),
+
+          _NavItem(
+            icon: SvgPicture.asset(
+              'assets/icons/user.svg',
+              color: Colors.white,
+              width: 24,
+              height: 24,
+            ),
+            index: 3,
+            currentIndex: _currentIndex,
+            onTap: jumpToTab,
+          ),
+        ],
+      ),
     );
   }
+}
 
-  void _goToTab(int index) {
-    final tab = AppRouter.shellTabs.elementAt(index);
-    Beamer.of(context).update(
-      configuration: RouteInformation(
-        uri: Uri(path: AppRouter.home(), queryParameters: {'tab': tab}),
+class _NavItem extends StatelessWidget {
+  final Widget icon;
+  final int index;
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const _NavItem({
+    required this.icon,
+    required this.index,
+    required this.currentIndex,
+    required this.onTap,
+  });
+
+  bool get _isActive => index == currentIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOut,
+        width: 64,
+        height: 64,
+        decoration: BoxDecoration(
+          color: _isActive ? const Color(0xFF3D7BF4) : const Color(0xFF1C1C1E),
+          shape: BoxShape.circle,
+        ),
+        child: Center(child: icon),
       ),
-      rebuild: false,
     );
-    widget.pageController.jumpToPage(index);
-    setState(() => currentIndex = index);
   }
 }

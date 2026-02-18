@@ -4,7 +4,7 @@ import 'package:smart_med/presentation/navigation/shell_screen.dart';
 import 'package:smart_med/presentation/views/payment/payment_screen.dart';
 import 'package:smart_med/presentation/views/authentication/sign_up_screen.dart';
 import 'package:smart_med/presentation/views/authentication/sing_in_screen.dart';
-import 'package:smart_med/presentation/views/onboarding_screen.dart';
+import 'package:smart_med/presentation/views/screens/onboarding_screen.dart';
 
 class AppRouter {
   static GlobalKey<NavigatorState>? _navigatorKey;

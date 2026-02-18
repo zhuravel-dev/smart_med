@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/core/presentation_strings.dart';
+import 'package:smart_med_strings/smart_med_strings.dart';
 
 class CreditCardDivider extends StatelessWidget {
   final String text;
@@ -10,7 +10,7 @@ class CreditCardDivider extends StatelessWidget {
 
   const CreditCardDivider({
     super.key,
-    this.text = PresentationStrings.or,
+    this.text = CommonStrings.or,
     this.lineColor = const Color(0xFFACABAB),
     this.textColor = const Color(0xFF757474),
     this.fontSize = 14,

@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/views/authentication/sing_in_screen.dart';
 
-import 'home_screen.dart';
-
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 

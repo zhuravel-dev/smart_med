@@ -12,28 +12,38 @@ class GreetingHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomCircleAvatar(imagePath: userAvatar[user.id]!),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Row(
               children: [
-                const Text("Good Morning!", style: TextStyle(color: Colors.grey)),
-                Text(
-                  "${user.firstName} ${user.lastName}",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                CustomCircleAvatar(imagePath: userAvatar[user.id]!),
+                const SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Good Morning!",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Text(
+                      "${user.firstName} ${user.lastName}",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
+            notificationButton(onTap: onNotificationTap),
           ],
         ),
-        notificationButton(onTap: onNotificationTap),
-      ],
-    );
+      );
   }
 }
+
