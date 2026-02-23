@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card/time_tile_item.dart';
+import 'package:smart_med/presentation/views/components/appointment_card/time_tile_item.dart';
 
 class TimeTileRow extends StatelessWidget {
   final List<String> times;

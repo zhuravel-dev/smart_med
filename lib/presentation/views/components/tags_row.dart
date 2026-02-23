@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/tag_item.dart';
+import 'package:smart_med/presentation/views/components/tag_item.dart';
 
 Widget TagsRow() {
   return SingleChildScrollView(

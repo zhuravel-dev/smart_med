@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card/appointment_card_item.dart';
-import 'package:smart_med/presentation/components/buttons/custom_back_button.dart';
-import 'package:smart_med/presentation/components/custom_app_bar.dart';
-import 'package:smart_med/presentation/components/buttons/send_message_button.dart';
+import 'package:smart_med/presentation/views/components/appointment_card/appointment_card_item.dart';
+import 'package:smart_med/presentation/views/components/buttons/custom_back_button.dart';
+import 'package:smart_med/presentation/views/components/buttons/send_message_button.dart';
+import 'package:smart_med/presentation/views/components/custom_app_bar.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
   final int doctorId;

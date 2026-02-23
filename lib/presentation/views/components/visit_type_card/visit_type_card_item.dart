@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/helpers/consultation_type.dart';
-import 'package:smart_med/presentation/components/visit_type_card/consultation_tile.dart';
-import 'package:smart_med/presentation/components/visit_type_card/custom_plus_button.dart';
-import 'package:smart_med/presentation/components/visit_type_card/visit_type_text_item.dart';
+import 'package:smart_med/presentation/views/components/visit_type_card/visit_type_text_item.dart';
+
+import 'consultation_tile.dart';
+import 'custom_plus_button.dart';
 
 class VisitTypeCard extends StatefulWidget {
   const VisitTypeCard({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card/custom_day_button.dart';
+import 'custom_day_button.dart';
 
 class CustomRowOfDays extends StatefulWidget {
   const CustomRowOfDays({super.key});

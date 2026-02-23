@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/doctor_card/doctor_rating.dart';
+
+import 'doctor_rating.dart';
 
 Widget DoctorCardItem() {
   return   Container(
