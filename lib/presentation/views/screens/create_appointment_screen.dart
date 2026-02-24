@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/presentation/views/components/appointment_card/appointment_card_item.dart';
-import 'package:smart_med/presentation/views/components/buttons/custom_back_button.dart';
-import 'package:smart_med/presentation/views/components/buttons/send_message_button.dart';
-import 'package:smart_med/presentation/views/components/custom_app_bar.dart';
+import 'doctor_profile_screen_simple.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
-  final int doctorId;
+ // final int doctorId;
+  final Doctor doctor;
 
-  const CreateAppointmentScreen({
-    super.key,
-    required this.doctorId,
-  });
+  const CreateAppointmentScreen({super.key, /*required this.doctorId,*/ required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +15,8 @@ class CreateAppointmentScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/doctors/$doctorId.jpg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          SafeArea(
-            child: CustomAppBar(
-              backgroundColor: Colors.transparent,
-              showBackButton: false,
-              leading: customBackButton(onTap: () => Navigator.pop(context)),
-              actions: [
-                sendMessageButton(onTap: () { print("SendMessageButton tapped"); }),
-              ],
-              title: null,
-              titleWidget: null,
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: AppointmentCard(),
-          ),
+          DoctorProfileScreen(doctor: doctor),
+          Align(alignment: Alignment.bottomCenter, child: AppointmentCard()),
         ],
       ),
     );

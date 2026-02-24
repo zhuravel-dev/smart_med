@@ -25,7 +25,7 @@ class ListOfDoctors extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => CreateAppointmentScreen(doctorId: doctor.id),
+                  builder: (_) => CreateAppointmentScreen(doctor: doctor),
                 ),
               );
             },

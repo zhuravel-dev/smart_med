@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/views/components/custom_app_bar.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
+import 'package:smart_med/presentation/views/components/custom_app_bar/custom_app_bar.dart';
 import 'package:smart_med_strings/smart_med_strings.dart';
 import 'package:smart_med/presentation/views/payment/add_credit_card_button.dart';
 import 'package:smart_med/presentation/views/payment/payment_card.dart';
 import 'package:smart_med/presentation/views/payment/payment_options_list.dart';
-import 'credit_card_divider.dart';
+import 'package:smart_med/presentation/views/payment/credit_card_divider.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -19,12 +20,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: AppColors.background,
 
       appBar: CustomAppBar(
         title: PaymentStrings.paymentMethod,
         showBackButton: true,
-        backgroundColor: Colors.grey[200],
+        backgroundColor: AppColors.background,
       ),
 
       body: SingleChildScrollView(
@@ -45,17 +46,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: selectedPayment == PaymentStrings.paymentIdCreditCard
-                        ? const Color(0xFF5B8DEF)
+                        ? AppColors.paymentAccent
                         : Colors.transparent,
                     border: Border.all(
                       color: selectedPayment == PaymentStrings.paymentIdCreditCard
-                          ? const Color(0xFF5B8DEF)
-                          : Colors.grey,
+                          ? AppColors.paymentAccent
+                          : AppColors.paymentBorderInactive,
                       width: 2,
                     ),
                   ),
                   child: selectedPayment == PaymentStrings.paymentIdCreditCard
-                      ? const Center(child: Icon(Icons.circle, color: Colors.white, size: 12))
+                      ? const Center(
+                    child: Icon(Icons.circle, color: AppColors.textLight, size: 12),
+                  )
                       : null,
                 ),
               ],
@@ -67,7 +70,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
               cardNumber: PaymentStrings.defaultCardNumber,
               cardHolderName: PaymentStrings.defaultCardHolder,
               expiryDate: PaymentStrings.defaultExpiryDate,
-              gradientColors: const [Color(0xFF5B8DEF), Color(0xFF4A7FE8)],
             ),
 
             const SizedBox(height: 32),

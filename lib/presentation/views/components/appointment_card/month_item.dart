@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget MonthItem() {
+Widget monthItem() {
   return Row(
     children: [
       const Icon(Icons.arrow_back_ios, size: 16, color: Colors.grey),

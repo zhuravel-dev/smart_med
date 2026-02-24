@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med/presentation/views/payment/mastercard_logo.dart';
 import 'package:smart_med_strings/smart_med_strings.dart';
 
@@ -7,7 +8,6 @@ class CreditCardWidget extends StatelessWidget {
   final String cardNumber;
   final String cardHolderName;
   final String expiryDate;
-  final List<Color> gradientColors;
 
   const CreditCardWidget({
     super.key,
@@ -15,7 +15,6 @@ class CreditCardWidget extends StatelessWidget {
     required this.cardNumber,
     required this.cardHolderName,
     required this.expiryDate,
-    this.gradientColors = const [Color(0xFF5B8DEF), Color(0xFF4A7FE8)],
   });
 
   @override
@@ -23,15 +22,11 @@ class CreditCardWidget extends StatelessWidget {
     return Container(
       height: 230,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: gradientColors,
-        ),
+        color: AppColors.primary,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: gradientColors[0].withOpacity(0.3),
+            color: AppColors.primary.withOpacity(0.3),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -46,7 +41,6 @@ class CreditCardWidget extends StatelessWidget {
             bankName,
             style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
           ),
-
           Text(
             _formatCardNumber(cardNumber),
             style: const TextStyle(
@@ -56,7 +50,6 @@ class CreditCardWidget extends StatelessWidget {
               letterSpacing: 2,
             ),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -78,7 +71,6 @@ class CreditCardWidget extends StatelessWidget {
                   ),
                 ],
               ),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget MakeAppointmentTitle() {
+Widget makeAppointmentTitle() {
   return Padding(
     padding: const EdgeInsets.only(left: 4),
     child: Column(

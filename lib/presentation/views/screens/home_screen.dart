@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med/presentation/views/components/home_greeting_header.dart';
 import 'package:smart_med/presentation/views/components/main_cards_row.dart';
 import 'package:smart_med/presentation/views/components/make_appointment_title.dart';
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE1E9FB),
+      backgroundColor: AppColors.background,
       body: SafeArea(
         bottom: true,
         child: ListView(
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 8),
             HomeGreetingHeader(),
             const SizedBox(height: 20),
-            MakeAppointmentTitle(),
+            makeAppointmentTitle(),
             const SizedBox(height: 24),
             TagsRow(),
             const SizedBox(height: 16),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/infra/mocks/mock_user.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med/presentation/views/components/buttons/notifications_button.dart';
 import 'package:smart_med/presentation/views/components/custom_circle_avatar.dart';
 
@@ -14,36 +15,32 @@ class GreetingHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                CustomCircleAvatar(imagePath: userAvatar[user.id]!),
-                const SizedBox(width: 12),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Good Morning!",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      "${user.firstName} ${user.lastName}",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            notificationButton(onTap: onNotificationTap),
-          ],
-        ),
-      );
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              CustomCircleAvatar(imagePath: userAvatar[user.id]!),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Good Morning,",
+                    style: TextStyle(fontSize: 15, color: AppColors.textMedium, fontWeight: FontWeight.normal),
+                  ),
+                  Text(
+                    "${user.firstName} ${user.lastName}",
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          notificationButton(onTap: onNotificationTap),
+        ],
+      ),
+    );
   }
 }
-

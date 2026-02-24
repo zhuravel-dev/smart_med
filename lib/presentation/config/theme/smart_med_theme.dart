@@ -10,7 +10,7 @@ abstract class SmartMedTheme {
     colorScheme: const ColorScheme.light(
       primary: AppColors.primary,
       onPrimary: AppColors.textLight,
-      surface: AppColors.cardLight,
+      surface: AppColors.light,
       onSurface: AppColors.textDark,
       background: AppColors.background,
       onBackground: AppColors.textDark,
@@ -74,7 +74,7 @@ abstract class SmartMedTheme {
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.cardLight,
+      fillColor: AppColors.light,
       hintStyle: const TextStyle(color: AppColors.textMuted),
 
       border: OutlineInputBorder(

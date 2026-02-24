@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med_strings/smart_med_strings.dart';
 
 class AddCreditCardButton extends StatelessWidget {
@@ -13,9 +14,9 @@ class AddCreditCardButton extends StatelessWidget {
     super.key,
     required this.onTap,
     this.text = PaymentStrings.addCreditCard,
-    this.borderColor = const Color(0xFF8EA7D1),
-    this.textColor = const Color(0xFF5B8DEF),
-    this.iconColor = const Color(0xFF5B8DEF),
+    this.borderColor = AppColors.addCardBorder,
+    this.textColor = AppColors.addCardText,
+    this.iconColor = AppColors.addCardIcon,
   });
 
   @override
@@ -39,7 +40,11 @@ class AddCreditCardButton extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 text,
-                style: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

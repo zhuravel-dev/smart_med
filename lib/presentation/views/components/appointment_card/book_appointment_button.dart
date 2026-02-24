@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 
 class BookAppointmentButton extends StatelessWidget {
   final DateTime? selectedDay;
@@ -14,7 +15,7 @@ class BookAppointmentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 70,
       child: ElevatedButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -26,10 +27,10 @@ class BookAppointmentButton extends StatelessWidget {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFF4285F4),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(42),
           ),
           elevation: 0,
         ),
