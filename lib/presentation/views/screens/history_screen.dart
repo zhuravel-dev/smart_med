@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/mocks/mock_visit_history.dart';
-import 'package:smart_med/presentation/components/visit_history_card.dart';
+import 'package:smart_med/presentation/views/components/visit_history_card.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});

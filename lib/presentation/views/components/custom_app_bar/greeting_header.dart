@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/domain/entities/user_model.dart';
 import 'package:smart_med/infra/mocks/mock_user.dart';
-import 'package:smart_med/presentation/components/buttons/notifications_button.dart';
-import 'package:smart_med/presentation/components/custom_circle_avatar.dart';
+import 'package:smart_med/presentation/views/components/buttons/notifications_button.dart';
+import 'package:smart_med/presentation/views/components/custom_circle_avatar.dart';
 
 class GreetingHeader extends StatelessWidget {
   final UserModel user;

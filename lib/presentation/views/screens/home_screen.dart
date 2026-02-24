@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/home_greeting_header.dart';
-import 'package:smart_med/presentation/components/main_cards_row.dart';
-import 'package:smart_med/presentation/components/make_appointment_title.dart';
-import 'package:smart_med/presentation/components/tags_row.dart';
+import 'package:smart_med/presentation/views/components/home_greeting_header.dart';
+import 'package:smart_med/presentation/views/components/main_cards_row.dart';
+import 'package:smart_med/presentation/views/components/make_appointment_title.dart';
+import 'package:smart_med/presentation/views/components/tags_row.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

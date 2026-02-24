@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/views/components/custom_app_bar.dart';
 import 'package:smart_med_strings/smart_med_strings.dart';
-import 'package:smart_med/presentation/components/custom_app_bar.dart';
 import 'package:smart_med/presentation/views/payment/add_credit_card_button.dart';
 import 'package:smart_med/presentation/views/payment/payment_card.dart';
 import 'package:smart_med/presentation/views/payment/payment_options_list.dart';

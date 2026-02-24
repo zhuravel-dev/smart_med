@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/helpers/consultation_type.dart';
-import 'package:smart_med/presentation/components/visit_type_card/custom_forward_button.dart';
+
+import 'custom_forward_button.dart';
 
 class ConsultationTile extends StatelessWidget {
   final ConsultationType type;

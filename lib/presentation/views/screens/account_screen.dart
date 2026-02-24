@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smart_med/presentation/components/account_option_tile.dart';
-import 'package:smart_med/presentation/components/profile_header.dart';
 import 'package:smart_med/presentation/cubits/user/user_cubit.dart';
 import 'package:smart_med/presentation/cubits/user/user_state.dart';
+import 'package:smart_med/presentation/views/components/account_option_tile.dart';
+import 'package:smart_med/presentation/views/components/divider.dart';
+import 'package:smart_med/presentation/views/components/profile_header.dart';
 import 'package:smart_med/presentation/views/payment/payment_screen.dart';
-import 'package:smart_med/presentation/components/divider.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});

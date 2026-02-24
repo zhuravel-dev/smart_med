@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/speciality_item.dart';
+import 'package:smart_med/presentation/views/components/speciality_item.dart';
 
 Widget SpecialityGrid() {
   return GridView.count(

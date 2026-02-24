@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/appointment_card/custom_row_of_days.dart';
-import 'package:smart_med/presentation/components/appointment_card/month_item.dart';
-import 'package:smart_med/presentation/components/appointment_card/select_available_slot_item.dart';
-import 'package:smart_med/presentation/components/appointment_card/time_tile_row.dart';
+import 'package:smart_med/presentation/views/components/appointment_card/select_available_slot_item.dart';
+import 'package:smart_med/presentation/views/components/appointment_card/time_tile_row.dart';
 import 'book_appointment_button.dart';
+import 'custom_row_of_days.dart';
+import 'month_item.dart';
 
 class AppointmentCard extends StatefulWidget {
   const AppointmentCard({super.key});

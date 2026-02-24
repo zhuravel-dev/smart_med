@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/main_card/time_chip.dart';
-import 'package:smart_med/presentation/components/main_card/row_of_doctors_avatars.dart';
+import 'package:smart_med/presentation/views/components/main_card/row_of_doctors_avatars.dart';
+import 'package:smart_med/presentation/views/components/main_card/time_chip.dart';
 
 class MainCard extends StatelessWidget {
   final Color color;

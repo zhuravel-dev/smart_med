@@ -1,8 +1,8 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_med/presentation/components/buttons/onboarding_get_started_button.dart';
-import 'package:smart_med/presentation/components/onboarding_category_chip.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
+import 'package:smart_med/presentation/views/components/buttons/onboarding_get_started_button.dart';
+import 'package:smart_med/presentation/views/components/onboarding_category_chip.dart';
 import 'package:smart_med_images/smart_med_images.dart';
 import 'package:smart_med_strings/smart_med_strings.dart';
 
@@ -116,14 +116,26 @@ class _AppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      CommonStrings.appName,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 24,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 0.5,
+    return const Text.rich(
+      TextSpan(
+        text: 'SmartMed\n',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.5,
+        ),
+        children: [
+          TextSpan(
+            text: 'developed by Yuliia Zhuravel',
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
       ),
+      textAlign: TextAlign.center,
     );
   }
 }
