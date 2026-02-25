@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/views/components/custom_app_bar/custom_app_bar.dart';
-import 'package:smart_med/presentation/views/components/list_of_doctors.dart';
+import 'package:smart_med/presentation/views/doctor/list_of_doctors.dart';
 
 class AppointmentScreen extends StatefulWidget {
   const AppointmentScreen({super.key});

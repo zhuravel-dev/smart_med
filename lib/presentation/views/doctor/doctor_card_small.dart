@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/domain/entities/doctor_model.dart';
-import 'package:smart_med/presentation/views/doctor_card/doctor_avatar.dart';
+
+import 'doctor_avatar.dart';
 
 class DoctorCardSmall extends StatelessWidget {
   final Doctor doctor;
