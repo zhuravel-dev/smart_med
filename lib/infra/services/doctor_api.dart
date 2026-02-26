@@ -15,6 +15,9 @@ class DoctorApi implements IDoctorApi {
     reviews: ['review1', 'review2'],
     workingHours: '09:00 - 18:00',
     patientsCount: 120,
+    recoveredPatients: 80,
+    inCare: 25,
+    free: 15,
     aboutMe: 'About Me',
   );
 
@@ -56,6 +59,9 @@ class DoctorApi implements IDoctorApi {
         reviews: doctor.reviews,
         workingHours: doctor.workingHours,
         patientsCount: doctor.patientsCount,
+        recoveredPatients: doctor.recoveredPatients,
+        inCare: doctor.inCare,
+        free: doctor.free,
         aboutMe: doctor.aboutMe,
       );
       return Result.empty();
@@ -80,6 +86,9 @@ class DoctorApi implements IDoctorApi {
         reviews: [],
         workingHours: '',
         patientsCount: 0,
+        recoveredPatients: 0,
+        inCare: 0,
+        free: 0,
         aboutMe: '',
       );
       return Result.empty();

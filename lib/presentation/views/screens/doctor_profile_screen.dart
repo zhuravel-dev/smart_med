@@ -31,12 +31,9 @@ class DoctorProfileScreen extends StatelessWidget {
                   child: OverflowBox(
                     maxWidth: double.infinity,
                     child: Transform.scale(
-                      scale: 1.2,
-                      alignment: Alignment.centerLeft,
-                      child: Image.asset(
-                        avatar,
-                        fit: BoxFit.cover,
-                      ),
+                      scale: 1.1,
+                      alignment: const Alignment(-1, -1),
+                      child: Image.asset(avatar, fit: BoxFit.cover),
                     ),
                   ),
                 ),
@@ -69,7 +66,7 @@ class DoctorProfileScreen extends StatelessWidget {
                               Text(
                                 "Dr. ${doctor.firstName}\n${doctor.lastName}",
                                 style: const TextStyle(
-                                  fontSize: 28,
+                                  fontSize: 26,
                                   fontWeight: FontWeight.bold,
                                   height: 1.15,
                                   color: Color(0xFF1A1A2E),
@@ -80,7 +77,11 @@ class DoctorProfileScreen extends StatelessWidget {
 
                               Text(
                                 doctor.specialization,
-                                style: TextStyle(fontSize: 15, color: Colors.grey.shade600),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey.shade600,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -99,4 +100,3 @@ class DoctorProfileScreen extends StatelessWidget {
     );
   }
 }
-

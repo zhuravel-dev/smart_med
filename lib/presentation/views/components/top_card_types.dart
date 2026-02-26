@@ -1,0 +1,1 @@
+enum TopCardType { filled, outlined, dashed }

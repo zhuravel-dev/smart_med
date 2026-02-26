@@ -7,17 +7,14 @@ import 'doctor_profile_screen.dart';
 class CreateAppointmentScreen extends StatelessWidget {
   final Doctor doctor;
 
-  const CreateAppointmentScreen({
-    super.key,
-    required this.doctor,
-  });
+  const CreateAppointmentScreen({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
     final profileHeight = screenHeight * 0.56;
-    final overlap = screenHeight * 0.1;
+    final overlap = screenHeight * 0.12;
 
     return Scaffold(
       body: Stack(
@@ -35,15 +32,10 @@ class CreateAppointmentScreen extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            child: TopCard(),
+            child: TopCard(doctor: doctor),
           ),
 
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: AppointmentCard(),
-          ),
+          Positioned(left: 0, right: 0, bottom: 0, child: AppointmentCard()),
         ],
       ),
     );

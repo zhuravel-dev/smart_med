@@ -8,6 +8,9 @@ class Doctor {
   final List<String> reviews;
   final String workingHours;
   final int patientsCount;
+  final int recoveredPatients;
+  final int inCare;
+  final int free;
   final String aboutMe;
 
   Doctor({
@@ -20,6 +23,9 @@ class Doctor {
     required this.reviews,
     required this.workingHours,
     required this.patientsCount,
+    required this.recoveredPatients,
+    required this.inCare,
+    required this.free,
     required this.aboutMe,
   });
 
@@ -32,6 +38,9 @@ class Doctor {
     List<String>? reviews,
     String? workingHours,
     int? patientsCount,
+    int? recoveredPatients,
+    int? inCare,
+    int? free,
     String? aboutMe,
   }) {
     return Doctor(
@@ -44,6 +53,9 @@ class Doctor {
       reviews: reviews ?? this.reviews,
       workingHours: workingHours ?? this.workingHours,
       patientsCount: patientsCount ?? this.patientsCount,
+      recoveredPatients: recoveredPatients ?? this.recoveredPatients,
+      inCare: inCare ?? this.inCare,
+      free: free ?? this.free,
       aboutMe: aboutMe ?? this.aboutMe,
     );
   }

@@ -24,7 +24,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
       left: 0,
       right: 0,
       child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.4,
+        height: MediaQuery.sizeOf(context).height * 0.38,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
@@ -65,7 +65,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                 child: CustomRowOfDays(),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 10),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -80,7 +80,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
                 ),
               ),
 
-              const SizedBox(height: 22),
+              const SizedBox(height: 18),
 
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
