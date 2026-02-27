@@ -3,6 +3,7 @@ import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/domain/iservices/idoctor_api.dart';
 import 'package:smart_med/infra/helpers/result.dart';
 import 'package:smart_med/infra/helpers/failures.dart';
+import 'package:smart_med_images/smart_med_images.dart';
 
 class DoctorApi implements IDoctorApi {
   Doctor _currentDoctor = Doctor(
@@ -19,6 +20,7 @@ class DoctorApi implements IDoctorApi {
     inCare: 25,
     free: 15,
     aboutMe: 'About Me',
+    image: SmartMedImages.defaultAvatarsDentistry[0],
   );
 
   bool throwException = false;
@@ -63,6 +65,7 @@ class DoctorApi implements IDoctorApi {
         inCare: doctor.inCare,
         free: doctor.free,
         aboutMe: doctor.aboutMe,
+        image: doctor.image,
       );
       return Result.empty();
     } else {
@@ -90,6 +93,7 @@ class DoctorApi implements IDoctorApi {
         inCare: 0,
         free: 0,
         aboutMe: '',
+        image: SmartMedImages.defaultAvatarsDentistry[0],
       );
       return Result.empty();
     } else {

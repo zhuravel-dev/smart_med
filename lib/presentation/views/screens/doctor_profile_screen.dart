@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/presentation/views/components/custom_app_bar/doctor_screen_app_bar.dart';
 import 'package:smart_med/presentation/views/doctor/doctor_rating_badge.dart';
-import 'package:smart_med_images/smart_med_images.dart';
 
 class DoctorProfileScreen extends StatelessWidget {
   final Doctor doctor;
@@ -11,9 +10,6 @@ class DoctorProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final avatar = SmartMedImages
-        .defaultAvatarsSurgery[doctor.id % SmartMedImages.defaultAvatarsSurgery.length];
-
     const heroHeight = 420.0;
     final statusBarHeight = MediaQuery.of(context).padding.top;
 
@@ -33,7 +29,7 @@ class DoctorProfileScreen extends StatelessWidget {
                     child: Transform.scale(
                       scale: 1.1,
                       alignment: const Alignment(-1, -1),
-                      child: Image.asset(avatar, fit: BoxFit.cover),
+                      child: Image.asset(doctor.image, fit: BoxFit.cover),
                     ),
                   ),
                 ),

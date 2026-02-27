@@ -31,7 +31,7 @@ abstract class AppColors {
   // ===== Navigation =====
   static const navBarBackground = Color(0xFF0F0F10);
   static const navItemInactive = Color(0xFF1C1C1E);
-  static const navItemActive = Color(0xFF2F6BFF);
+  static const navItemActive = Color(0xFF2A5BDC);
   static const navIcon = Colors.white;
 
   // ===== Greeting Header =====

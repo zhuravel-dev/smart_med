@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med/presentation/views/components/custom_app_bar/custom_app_bar.dart';
 import 'package:smart_med/presentation/views/doctor/list_of_doctors.dart';
 
@@ -13,13 +14,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: AppColors.background,
       appBar: CustomAppBar(title: "Appointments"),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-          ),
+          Padding(padding: const EdgeInsets.symmetric(horizontal: 16)),
           Expanded(child: ListOfDoctors()),
         ],
       ),

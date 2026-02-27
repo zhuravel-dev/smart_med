@@ -12,6 +12,7 @@ class Doctor {
   final int inCare;
   final int free;
   final String aboutMe;
+  final String image;
 
   Doctor({
     required this.id,
@@ -27,6 +28,7 @@ class Doctor {
     required this.inCare,
     required this.free,
     required this.aboutMe,
+    required this.image,
   });
 
   Doctor copyWith({
@@ -42,6 +44,7 @@ class Doctor {
     int? inCare,
     int? free,
     String? aboutMe,
+    String? image,
   }) {
     return Doctor(
       id: id,
@@ -57,6 +60,7 @@ class Doctor {
       inCare: inCare ?? this.inCare,
       free: free ?? this.free,
       aboutMe: aboutMe ?? this.aboutMe,
+      image: image ?? this.image,
     );
   }
 }

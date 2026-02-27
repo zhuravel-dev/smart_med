@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 
 class SmartMedNavigationBar extends StatefulWidget {
   final int initialTabIndex;
@@ -120,7 +121,7 @@ class _NavItem extends StatelessWidget {
         width: 64,
         height: 64,
         decoration: BoxDecoration(
-          color: _isActive ? const Color(0xFF3D7BF4) : const Color(0xFF1C1C1E),
+          color: _isActive ? AppColors.navItemActive : const Color(0xFF353537),
           shape: BoxShape.circle,
         ),
         child: Center(child: icon),

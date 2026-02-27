@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:smart_med/domain/entities/doctor_model.dart';
 
 class DoctorImage extends StatelessWidget {
@@ -26,11 +26,7 @@ class DoctorImage extends StatelessWidget {
       child: SizedBox(
         width: width,
         height: height,
-        child: Image.asset(
-          'assets/images/doctors/${doctor.id}.jpg',
-          fit: fit,
-          alignment: alignment,
-        ),
+        child: Image.asset(doctor.image, fit: fit, alignment: alignment),
       ),
     );
   }

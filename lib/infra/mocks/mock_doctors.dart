@@ -1,4 +1,5 @@
 import 'package:smart_med/domain/entities/doctor_model.dart';
+import 'package:smart_med_images/smart_med_images.dart';
 
 final mockDoctors = [
   Doctor(
@@ -11,11 +12,12 @@ final mockDoctors = [
     reviews: ["Great doctor", "Very attentive"],
     workingHours: "9:00 - 5:00 PM",
     patientsCount: 120,
-    recoveredPatients: 90,
-    inCare: 20,
-    free: 10,
+    recoveredPatients: 192,
+    inCare: 24,
+    free: 11,
     aboutMe:
-    "I am a therapist with many years of experience. I enjoy helping people and focusing on preventive healthcare.",
+        "I am a therapist with many years of experience. I enjoy helping people and focusing on preventive healthcare.",
+    image: SmartMedImages.defaultAvatarsSurgery[1],
   ),
   Doctor(
     id: 2,
@@ -27,10 +29,11 @@ final mockDoctors = [
     reviews: ["Professional", "Caring"],
     workingHours: "10:00 - 6:00 PM",
     patientsCount: 95,
-    recoveredPatients: 60,
-    inCare: 25,
-    free: 10,
+    recoveredPatients: 162,
+    inCare: 26,
+    free: 14,
     aboutMe: "Passionate about heart health and patient care.",
+    image: SmartMedImages.defaultAvatarsSurgery[0],
   ),
   Doctor(
     id: 3,
@@ -42,11 +45,11 @@ final mockDoctors = [
     reviews: ["Expert in his field", "Very attentive"],
     workingHours: "8:00 - 4:00 PM",
     patientsCount: 300,
-    recoveredPatients: 220,
-    inCare: 60,
-    free: 20,
-    aboutMe:
-    "Experienced neurologist with a focus on brain health and patient well-being.",
+    recoveredPatients: 136,
+    inCare: 17,
+    free: 12,
+    aboutMe: "Experienced neurologist with a focus on brain health and patient well-being.",
+    image: SmartMedImages.defaultAvatarsSurgery[3],
   ),
   Doctor(
     id: 4,
@@ -58,10 +61,11 @@ final mockDoctors = [
     reviews: ["Great with kids", "Very patient and kind"],
     workingHours: "9:00 - 3:00 PM",
     patientsCount: 80,
-    recoveredPatients: 55,
+    recoveredPatients: 155,
     inCare: 15,
     free: 10,
     aboutMe:
-    "Dedicated pediatrician who loves working with children and supporting families in their healthcare journey.",
+        "Dedicated pediatrician who loves working with children and supporting families in their healthcare journey.",
+    image: SmartMedImages.defaultAvatarsSurgery[4],
   ),
 ];
