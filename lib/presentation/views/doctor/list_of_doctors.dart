@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/mocks/mock_doctors.dart';
 import 'package:smart_med/presentation/views/screens/create_appointment_screen.dart';
-
 import 'doctor_card_small.dart';
 
 class ListOfDoctors extends StatelessWidget {
@@ -20,7 +19,7 @@ class ListOfDoctors extends StatelessWidget {
         final doctor = mockDoctors[index];
 
         return Padding(
-          padding: const EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.only(bottom: 16),
           child: DoctorCardSmall(
             doctor: doctor,
             onTap: () {

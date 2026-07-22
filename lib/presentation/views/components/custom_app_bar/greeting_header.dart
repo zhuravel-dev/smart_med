@@ -28,8 +28,9 @@ class GreetingHeader extends StatelessWidget {
                 children: [
                   const Text(
                     "Good Morning,",
-                    style: TextStyle(fontSize: 15, color: AppColors.textMedium, fontWeight: FontWeight.normal),
+                    style: TextStyle(fontSize: 16, color: AppColors.textMedium, fontWeight: FontWeight.normal),
                   ),
+                  const SizedBox(height: 2),
                   Text(
                     "${user.firstName} ${user.lastName}",
                     style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

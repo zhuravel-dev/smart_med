@@ -106,7 +106,10 @@ class DoctorCardSmall extends StatelessWidget {
             Container(
               width: 42,
               height: 42,
-              decoration: BoxDecoration(color: AppColors.primary, shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: AppColors.primary.withOpacity(0.97),
+                shape: BoxShape.circle,
+              ),
               child: const Icon(Icons.arrow_forward, color: AppColors.light, size: 18),
             ),
           ],

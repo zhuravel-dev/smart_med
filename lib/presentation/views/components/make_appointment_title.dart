@@ -11,14 +11,15 @@ Widget makeAppointmentTitle() {
         Text(
           "Make an",
           style: GoogleFonts.montserrat(
-            fontSize: 24,
+            fontSize: 28,
             fontWeight: FontWeight.w500,
           ),
         ),
+        const SizedBox(height: 4),
         Text(
           "Appointment",
             style: GoogleFonts.montserrat(
-              fontSize: 30,
+              fontSize: 32,
               fontWeight: FontWeight.w700,
               height: 1.1,
             ),
