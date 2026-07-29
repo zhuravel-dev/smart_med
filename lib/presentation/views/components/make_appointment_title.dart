@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget makeAppointmentTitle() {
+Widget makeTitle({
+  required String firstText,
+  String? secondText,
+  double firstFontSize = 28,
+  double secondFontSize = 32,
+  FontWeight firstFontWeight = FontWeight.w500,
+  FontWeight secondFontWeight = FontWeight.w700,
+  double spacing = 4,
+}) {
   return Padding(
     padding: const EdgeInsets.only(left: 4),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         Text(
-          "Make an",
-          style: GoogleFonts.montserrat(
-            fontSize: 28,
-            fontWeight: FontWeight.w500,
-          ),
+          firstText,
+          style: GoogleFonts.montserrat(fontSize: firstFontSize, fontWeight: firstFontWeight),
         ),
-        const SizedBox(height: 4),
-        Text(
-          "Appointment",
+        SizedBox(height: spacing),
+        if (secondText != null)
+          Text(
+            secondText,
             style: GoogleFonts.montserrat(
-              fontSize: 32,
-              fontWeight: FontWeight.w700,
+              fontSize: secondFontSize,
+              fontWeight: secondFontWeight,
               height: 1.1,
             ),
-        ),
+          ),
       ],
     ),
   );

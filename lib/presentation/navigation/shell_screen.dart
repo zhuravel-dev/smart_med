@@ -7,35 +7,77 @@ import 'package:smart_med/presentation/views/screens/find_your_doctor_screen.dar
 import 'package:smart_med/presentation/views/screens/history_screen.dart';
 import 'smart_med_navigation_bar.dart';
 
-class ShellScreen extends StatelessWidget {
+class ShellScreen extends StatefulWidget {
   final BeamState routerState;
   const ShellScreen({super.key, required this.routerState});
 
   @override
+  State<ShellScreen> createState() => _ShellScreenState();
+}
+
+class _ShellScreenState extends State<ShellScreen> {
+  late final PageController _pageController;
+  bool _isNavigationBarHidden = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final initialTabIndex = _getShallTabIndex(widget.routerState.queryParameters['tab']);
+
+    _pageController = PageController(initialPage: initialTabIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onScrollDirectionChanged(bool isScrollingDown) {
+    if (_isNavigationBarHidden == isScrollingDown) {
+      return;
+    }
+
+    setState(() {
+      _isNavigationBarHidden = isScrollingDown;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final initialTabIndex = _getShallTabIndex(routerState.queryParameters['tab']);
-    final pageController = PageController(initialPage: initialTabIndex);
+    final initialTabIndex = _getShallTabIndex(widget.routerState.queryParameters['tab']);
 
     return Scaffold(
       body: Stack(
         children: [
           PageView(
-            controller: pageController,
+            controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              const HomeScreen(),
-              AppointmentScreen(),
-              const HistoryScreen(),
-              AccountScreen(),
+              HomeScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
+              AppointmentScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
+              HistoryScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
+              AccountScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
             ],
           ),
           Positioned(
             bottom: 36,
             left: 48,
             right: 48,
-            child: SmartMedNavigationBar(
-              initialTabIndex: initialTabIndex,
-              pageController: pageController,
+            child: AnimatedSlide(
+              offset: _isNavigationBarHidden ? const Offset(0, 1) : Offset.zero,
+              duration: const Duration(milliseconds: 450),
+              curve: Curves.easeInOutCubic,
+              child: AnimatedOpacity(
+                opacity: _isNavigationBarHidden ? 0.0 : 1.0,
+                duration: const Duration(milliseconds: 350),
+                curve: Curves.easeInOut,
+                child: SmartMedNavigationBar(
+                  initialTabIndex: initialTabIndex,
+                  pageController: _pageController,
+                ),
+              ),
             ),
           ),
         ],

@@ -106,7 +106,7 @@ class MainCard extends StatelessWidget {
                   width: avatarRadius * 2.2,
                   height: avatarRadius * 2.2,
                   decoration: BoxDecoration(color: chipColor, shape: BoxShape.circle),
-                  child: Icon(Icons.arrow_forward, color: textColor),
+                  child: Icon(Icons.arrow_outward, color: textColor),
                 ),
               ),
             ],

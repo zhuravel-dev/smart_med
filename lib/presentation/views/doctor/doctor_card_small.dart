@@ -7,7 +7,11 @@ class DoctorCardSmall extends StatelessWidget {
   final Doctor doctor;
   final VoidCallback? onTap;
 
-  const DoctorCardSmall({super.key, required this.doctor, this.onTap});
+  const DoctorCardSmall({
+    super.key,
+    required this.doctor,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +27,15 @@ class DoctorCardSmall extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 18, bottom: 18),
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
+          top: 18,
+          bottom: 18,
+        ),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(38),
+          borderRadius: BorderRadius.circular(32),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.07),
@@ -35,84 +44,106 @@ class DoctorCardSmall extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(18),
-              child: DoctorImage(
-                doctor: doctor,
-                width: avatarRadius * 2.4,
-                height: avatarRadius * 2.4,
-                borderRadius: 20,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: DoctorImage(
+                  doctor: doctor,
+                  width: avatarRadius * 2.4,
+                  height: avatarRadius * 2.4,
+                  borderRadius: 20,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
               ),
-            ),
 
-            const SizedBox(width: 16),
+              const SizedBox(width: 16),
 
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Dr. ${doctor.firstName} ${doctor.lastName}",
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      color: textColor,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: chipColor,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      doctor.specialization,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Dr. ${doctor.firstName} ${doctor.lastName}",
                       style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
                         color: textColor,
                       ),
                     ),
-                  ),
 
-                  const SizedBox(height: 10),
+                    const SizedBox(height: 6),
 
-                  Row(
-                    children: [
-                      Icon(Icons.schedule, size: 14, color: Colors.black87.withOpacity(0.6)),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: Text(
-                          doctor.workingHours,
-                          style: TextStyle(fontSize: 14, color: Colors.black87.withOpacity(0.7)),
-                          overflow: TextOverflow.ellipsis,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: chipColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        doctor.specialization,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: textColor,
                         ),
                       ),
-                    ],
+                    ),
+
+                    const SizedBox(height: 10),
+
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.schedule,
+                          size: 14,
+                          color: Colors.black87.withOpacity(0.6),
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            doctor.workingHours,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black87.withOpacity(0.7),
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(width: 8),
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 42,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withOpacity(0.9),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.arrow_outward,
+                      color: AppColors.light,
+                      size: 18,
+                    ),
                   ),
                 ],
               ),
-            ),
-
-            const SizedBox(width: 8),
-
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.97),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(Icons.arrow_forward, color: AppColors.light, size: 18),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

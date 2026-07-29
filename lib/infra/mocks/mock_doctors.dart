@@ -85,7 +85,7 @@ final mockDoctors = [
         "Orthopedist with extensive experience in treating joint and spine conditions. Focused on restoring mobility and quality of life.",
     image: SmartMedImages.defaultAvatarsDentistry[0],
   ),
-  /*Doctor(
+  Doctor(
     id: 6,
     firstName: "Sophia",
     lastName: "Davis",
@@ -118,5 +118,5 @@ final mockDoctors = [
     aboutMe:
         "Endocrinologist focused on hormonal balance and metabolic health. Believes in personalized treatment plans.",
     image: SmartMedImages.defaultAvatarsSurgery[1],
-  ),*/
+  ),
 ];

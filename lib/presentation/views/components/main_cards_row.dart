@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/config/theme/app_colors.dart';
 import 'package:smart_med_images/smart_med_images.dart';
-
 import 'main_card/main_card.dart';
 
 class MainCardsRow extends StatelessWidget {
@@ -35,16 +34,16 @@ class MainCardsRow extends StatelessWidget {
           additionalCount: 2,
         ),
         SizedBox(height: 8),
-       /* MainCard(
+        MainCard(
           color: const Color(0xff2F6BFF),
           doctorType: "Cardiology",
           time: "10:20 AM - 4:40 PM",
           doctorsAvailable: 12,
           categoryImage: SmartMedImages.cardiology,
           onTap: () {},
-          doctorAvatars: SmartMedImages.defaultAvatarsSurgery,
+          doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
           additionalCount: 6,
-        ),*/
+        ),
       ],
     );
   }

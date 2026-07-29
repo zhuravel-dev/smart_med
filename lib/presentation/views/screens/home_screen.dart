@@ -6,31 +6,63 @@ import 'package:smart_med/presentation/views/components/make_appointment_title.d
 import 'package:smart_med/presentation/views/components/tags_row.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final ValueChanged<bool>? onScrollDirectionChanged;
+
+  const HomeScreen({super.key, this.onScrollDirectionChanged});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  double _lastScrollOffset = 0;
+
+  void _onScroll(ScrollNotification notification) {
+    if (notification is! ScrollUpdateNotification) {
+      return;
+    }
+
+    final currentOffset = notification.metrics.pixels;
+    if ((currentOffset - _lastScrollOffset).abs() < 5) {
+      return;
+    }
+    if (currentOffset <= 0) {
+      widget.onScrollDirectionChanged?.call(false);
+      _lastScrollOffset = currentOffset;
+      return;
+    }
+    final isScrollingDown = currentOffset > _lastScrollOffset;
+
+    widget.onScrollDirectionChanged?.call(isScrollingDown);
+
+    _lastScrollOffset = currentOffset;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
         bottom: true,
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-          children: [
-            const SizedBox(height: 8),
-            HomeGreetingHeader(),
-            const SizedBox(height: 20),
-            makeAppointmentTitle(),
-            const SizedBox(height: 24),
-            TagsRow(),
-            const SizedBox(height: 16),
-            MainCardsRow(),
-          ],
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (notification) {
+            _onScroll(notification);
+            return false;
+          },
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            children: [
+              const SizedBox(height: 8),
+              HomeGreetingHeader(),
+              const SizedBox(height: 20),
+              makeTitle(firstText: 'Make an', secondText: 'Appointment'),
+              const SizedBox(height: 24),
+              TagsRow(),
+              const SizedBox(height: 16),
+              MainCardsRow(),
+              const SizedBox(height: 120),
+            ],
+          ),
         ),
       ),
     );

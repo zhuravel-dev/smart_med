@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/mocks/mock_doctors.dart';
 import 'package:smart_med/presentation/views/screens/create_appointment_screen.dart';
@@ -9,11 +10,15 @@ class ListOfDoctors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (mockDoctors.isEmpty) {
-      return const Center(child: Text("No doctors available"));
+      return const Center(
+        child: Text("No doctors available"),
+      );
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       itemCount: mockDoctors.length,
       itemBuilder: (context, index) {
         final doctor = mockDoctors[index];
@@ -25,7 +30,9 @@ class ListOfDoctors extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => CreateAppointmentScreen(doctor: doctor),
+                  builder: (_) => CreateAppointmentScreen(
+                    doctor: doctor,
+                  ),
                 ),
               );
             },
