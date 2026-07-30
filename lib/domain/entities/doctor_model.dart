@@ -8,7 +8,11 @@ class Doctor {
   final List<String> reviews;
   final String workingHours;
   final int patientsCount;
+  final int recoveredPatients;
+  final int inCare;
+  final int free;
   final String aboutMe;
+  final String image;
 
   Doctor({
     required this.id,
@@ -20,7 +24,11 @@ class Doctor {
     required this.reviews,
     required this.workingHours,
     required this.patientsCount,
+    required this.recoveredPatients,
+    required this.inCare,
+    required this.free,
     required this.aboutMe,
+    required this.image,
   });
 
   Doctor copyWith({
@@ -32,7 +40,11 @@ class Doctor {
     List<String>? reviews,
     String? workingHours,
     int? patientsCount,
+    int? recoveredPatients,
+    int? inCare,
+    int? free,
     String? aboutMe,
+    String? image,
   }) {
     return Doctor(
       id: id,
@@ -44,7 +56,11 @@ class Doctor {
       reviews: reviews ?? this.reviews,
       workingHours: workingHours ?? this.workingHours,
       patientsCount: patientsCount ?? this.patientsCount,
+      recoveredPatients: recoveredPatients ?? this.recoveredPatients,
+      inCare: inCare ?? this.inCare,
+      free: free ?? this.free,
       aboutMe: aboutMe ?? this.aboutMe,
+      image: image ?? this.image,
     );
   }
 }

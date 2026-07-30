@@ -8,22 +8,48 @@ import 'package:smart_med/presentation/views/components/profile_header.dart';
 import 'package:smart_med/presentation/views/payment/payment_screen.dart';
 
 class AccountScreen extends StatefulWidget {
-  const AccountScreen({super.key});
+  final ValueChanged<bool>? onScrollDirectionChanged;
+
+  const AccountScreen({super.key, this.onScrollDirectionChanged});
 
   @override
-  _AccountScreenState createState() => _AccountScreenState();
+  State<AccountScreen> createState() => _AccountScreenState();
 }
 
 class _AccountScreenState extends State<AccountScreen> {
   bool _isDarkMode = false;
+  double _lastScrollOffset = 0;
 
   void _toggleDarkMode(bool value) {
     setState(() => _isDarkMode = value);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Dark Mode ${_isDarkMode ? 'Enabled' : 'Disabled'}'),
-      ),
-    );
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Dark Mode ${_isDarkMode ? 'Enabled' : 'Disabled'}')));
+  }
+
+  void _onScroll(ScrollNotification notification) {
+    if (notification is! ScrollUpdateNotification) {
+      return;
+    }
+
+    final currentOffset = notification.metrics.pixels;
+
+    if ((currentOffset - _lastScrollOffset).abs() < 5) {
+      return;
+    }
+
+    if (currentOffset <= 0) {
+      widget.onScrollDirectionChanged?.call(false);
+      _lastScrollOffset = currentOffset;
+      return;
+    }
+
+    final isScrollingDown = currentOffset > _lastScrollOffset;
+
+    widget.onScrollDirectionChanged?.call(isScrollingDown);
+
+    _lastScrollOffset = currentOffset;
   }
 
   @override
@@ -31,23 +57,19 @@ class _AccountScreenState extends State<AccountScreen> {
     return BlocBuilder<UserCubit, UserState>(
       builder: (context, state) {
         final user = state.user;
+
         return Scaffold(
           backgroundColor: Colors.grey[100],
           appBar: _buildAppBar(),
           body: Column(
             children: [
-              ProfileHeader(
-                userName: user?.firstName ?? "",
-                phoneNumber: user?.phoneNumber ?? "",
-              ),
+              ProfileHeader(userName: user?.firstName ?? '', phoneNumber: user?.phoneNumber ?? ''),
               const SizedBox(height: 20),
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(20),
-                    ),
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
@@ -57,97 +79,97 @@ class _AccountScreenState extends State<AccountScreen> {
                       ),
                     ],
                   ),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: [
-                      AccountOptionTile(
-                        leadingIcon: Icons.notifications_outlined,
-                        title: "Notification",
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.grey,
+                  child: NotificationListener<ScrollNotification>(
+                    onNotification: (notification) {
+                      _onScroll(notification);
+                      return false;
+                    },
+                    child: ListView(
+                      padding: const EdgeInsets.only(top: 0, bottom: 120),
+                      children: [
+                        AccountOptionTile(
+                          leadingIcon: Icons.notifications_outlined,
+                          title: 'Notification',
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          onTap: () {},
                         ),
-                        onTap: () {},
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.payment_outlined,
-                        title: "Payment",
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.grey,
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.payment_outlined,
+                          title: 'Payment',
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          onTap: () {
+                            Navigator.of(
+                              context,
+                            ).push(MaterialPageRoute(builder: (_) => const PaymentScreen()));
+                          },
                         ),
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => const PaymentScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.security_outlined,
-                        title: "Security",
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.grey,
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.security_outlined,
+                          title: 'Security',
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          onTap: () {},
                         ),
-                        onTap: () {},
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.language_outlined,
-                        title: "Language",
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              "English (US)",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.grey,
-                            ),
-                          ],
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.language_outlined,
+                          title: 'Language',
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text('English (US)', style: TextStyle(color: Colors.grey)),
+                              Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+                            ],
+                          ),
+                          onTap: () {},
                         ),
-                        onTap: () {},
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.dark_mode_outlined,
-                        title: "Dark Mode",
-                        trailing: Switch(
-                          value: _isDarkMode,
-                          onChanged: _toggleDarkMode,
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.dark_mode_outlined,
+                          title: 'Dark Mode',
+                          trailing: Switch(value: _isDarkMode, onChanged: _toggleDarkMode),
+                          onTap: null,
                         ),
-                        onTap: null,
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.help_outline,
-                        title: "Help Center",
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.grey,
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.help_outline,
+                          title: 'Help Center',
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16,
+                            color: Colors.grey,
+                          ),
+                          onTap: () {},
                         ),
-                        onTap: () {},
-                      ),
-                      const SmartMedDivider(),
-                      AccountOptionTile(
-                        leadingIcon: Icons.logout_outlined,
-                        title: "Logout",
-                        textColor: Colors.red,
-                        trailing: const SizedBox(),
-                        onTap: () {},
-                      ),
-                    ],
+                        const SmartMedDivider(),
+
+                        AccountOptionTile(
+                          leadingIcon: Icons.logout_outlined,
+                          title: 'Logout',
+                          textColor: Colors.red,
+                          trailing: const SizedBox(),
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -161,7 +183,7 @@ class _AccountScreenState extends State<AccountScreen> {
   AppBar _buildAppBar() {
     return AppBar(
       title: const Text(
-        "Account",
+        'Account',
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
       backgroundColor: Colors.blue,

@@ -3,6 +3,7 @@ import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/domain/iservices/idoctor_api.dart';
 import 'package:smart_med/infra/helpers/result.dart';
 import 'package:smart_med/infra/helpers/failures.dart';
+import 'package:smart_med_images/smart_med_images.dart';
 
 class DoctorApi implements IDoctorApi {
   Doctor _currentDoctor = Doctor(
@@ -15,7 +16,11 @@ class DoctorApi implements IDoctorApi {
     reviews: ['review1', 'review2'],
     workingHours: '09:00 - 18:00',
     patientsCount: 120,
+    recoveredPatients: 80,
+    inCare: 25,
+    free: 15,
     aboutMe: 'About Me',
+    image: SmartMedImages.defaultAvatarsDentistry[0],
   );
 
   bool throwException = false;
@@ -56,7 +61,11 @@ class DoctorApi implements IDoctorApi {
         reviews: doctor.reviews,
         workingHours: doctor.workingHours,
         patientsCount: doctor.patientsCount,
+        recoveredPatients: doctor.recoveredPatients,
+        inCare: doctor.inCare,
+        free: doctor.free,
         aboutMe: doctor.aboutMe,
+        image: doctor.image,
       );
       return Result.empty();
     } else {
@@ -80,7 +89,11 @@ class DoctorApi implements IDoctorApi {
         reviews: [],
         workingHours: '',
         patientsCount: 0,
+        recoveredPatients: 0,
+        inCare: 0,
+        free: 0,
         aboutMe: '',
+        image: SmartMedImages.defaultAvatarsDentistry[0],
       );
       return Result.empty();
     } else {

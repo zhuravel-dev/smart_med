@@ -36,8 +36,8 @@ class AppRouter {
   static String account() => '/?tab=${shellTabs[3]}';
 
   static BeamerDelegate buildRouterDelegate() {
-    //final String initialRoute = AppRouter.home();
-    final String initialRoute = AppRouter.onBoarding();
+    final String initialRoute = AppRouter.home();
+    //final String initialRoute = AppRouter.onBoarding();
     final routerDelegate = BeamerDelegate(
       initialPath: initialRoute,
       locationBuilder: RoutesLocationBuilder(

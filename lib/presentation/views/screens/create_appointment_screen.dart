@@ -1,45 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/domain/entities/doctor_model.dart';
 import 'package:smart_med/presentation/views/components/appointment_card/appointment_card_item.dart';
-import 'package:smart_med/presentation/views/components/buttons/custom_back_button.dart';
-import 'package:smart_med/presentation/views/components/buttons/send_message_button.dart';
-import 'package:smart_med/presentation/views/components/custom_app_bar.dart';
+import 'package:smart_med/presentation/views/components/top_card.dart';
+import 'doctor_profile_screen.dart';
 
 class CreateAppointmentScreen extends StatelessWidget {
-  final int doctorId;
+  final Doctor doctor;
 
-  const CreateAppointmentScreen({
-    super.key,
-    required this.doctorId,
-  });
+  const CreateAppointmentScreen({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    final profileHeight = screenHeight * 0.56;
+    final overlap = screenHeight * 0.12;
+    final topCardHeight = (profileHeight - overlap) * 1.45;
+
     return Scaffold(
-      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/doctors/$doctorId.jpg',
-              fit: BoxFit.cover,
-            ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: profileHeight,
+            child: DoctorProfileScreen(doctor: doctor),
           ),
-          SafeArea(
-            child: CustomAppBar(
-              backgroundColor: Colors.transparent,
-              showBackButton: false,
-              leading: customBackButton(onTap: () => Navigator.pop(context)),
-              actions: [
-                sendMessageButton(onTap: () { print("SendMessageButton tapped"); }),
-              ],
-              title: null,
-              titleWidget: null,
-            ),
+
+          Positioned(
+            top: profileHeight - overlap,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: TopCard(doctor: doctor),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: AppointmentCard(),
-          ),
+
+          Positioned(top: topCardHeight, left: 0, right: 0, bottom: 0, child: AppointmentCard()),
         ],
       ),
     );

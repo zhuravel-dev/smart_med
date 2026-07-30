@@ -37,7 +37,7 @@ class MainCard extends StatelessWidget {
     final avatarOffset = avatarRadius * 1.5;
 
     final textColor = isLight ? Colors.black87 : Colors.white;
-    final chipColor = isLight ? Colors.grey.withOpacity(0.15) : Colors.white.withOpacity(0.25);
+    final chipColor = isLight ? Colors.grey.withOpacity(0.15) : Colors.white.withOpacity(0.15);
 
     return Container(
       width: double.infinity,
@@ -106,7 +106,7 @@ class MainCard extends StatelessWidget {
                   width: avatarRadius * 2.2,
                   height: avatarRadius * 2.2,
                   decoration: BoxDecoration(color: chipColor, shape: BoxShape.circle),
-                  child: Icon(Icons.arrow_forward, color: textColor),
+                  child: Icon(Icons.arrow_outward, color: textColor),
                 ),
               ),
             ],

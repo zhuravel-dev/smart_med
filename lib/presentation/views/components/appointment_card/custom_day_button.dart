@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 
 class CustomDayButton extends StatelessWidget {
   final DateTime day;
@@ -12,41 +13,43 @@ class CustomDayButton extends StatelessWidget {
     required this.onTap,
   });
 
+  String getWeekDay(DateTime date) {
+    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return weekDays[date.weekday - 1];
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 52,
-        margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+        height: 88,
+        width: 56,
+        margin: const EdgeInsets.fromLTRB(0, 0, 6, 10),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.grey[350] : Colors.grey[200],
+          color: isSelected ? AppColors.buttonAccent : Colors.grey[200],
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              '',
-              //DateFormat.E().format(day),
+              getWeekDay(day),
               style: TextStyle(
+                fontSize: 12,
                 color: isSelected ? Colors.black : Colors.black54,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             Container(
-              width: 40,
-              height: 36,
+              width: 58,
+              height: 44,
               decoration: BoxDecoration(
-                color: isSelected ? Color(0xFF4285F4) : Colors.white,
+                color: isSelected ? AppColors.primary : Colors.white,
                 shape: BoxShape.circle,
                 boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 4,
-                    offset: Offset(0, 2),
-                  ),
+                  BoxShadow(color: Colors.black12, blurRadius: 4, offset: Offset(0, 2)),
                 ],
               ),
               alignment: Alignment.center,
@@ -58,6 +61,7 @@ class CustomDayButton extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 3),
           ],
         ),
       ),

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-Widget SelectAvailableSlotTextItem() {
+Widget selectAvailableSlotTextItem() {
   return const Text(
     'Select available slot',
-    style: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w600,
-      color: Colors.black87,
-    ),
+    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: Colors.black87),
   );
 }

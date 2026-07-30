@@ -4,9 +4,9 @@ import 'package:smart_med_images/smart_med_images.dart';
 final mockUsers = [
   UserModel(
     id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    email: "alex.morgan@example.com",
+    firstName: "Matthew",
+    lastName: "Williams",
+    email: "matthew.williams@example.com",
     phoneNumber: "+1234567890",
   ),
 ];

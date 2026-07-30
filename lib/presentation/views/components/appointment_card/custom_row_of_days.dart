@@ -14,33 +14,35 @@ class _CustomRowOfDaysState extends State<CustomRowOfDays> {
 
   @override
   Widget build(BuildContext context) {
-    List<DateTime> weekDays = List.generate(
-      7,
-      (index) => startDate.add(Duration(days: index)),
-    );
+    final weekDays = List.generate(7, (index) => startDate.add(Duration(days: index)));
 
     return SizedBox(
-      height: 100,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: weekDays.length,
-        itemBuilder: (context, index) {
-          DateTime day = weekDays[index];
-          bool isSelected =
+      height: 110,
+      child: Row(
+        children: weekDays.map((day) {
+          final isSelected =
               day.day == selectedDate.day &&
               day.month == selectedDate.month &&
               day.year == selectedDate.year;
 
-          return CustomDayButton(
-            day: day,
-            isSelected: isSelected,
-            onTap: () {
-              setState(() {
-                selectedDate = day;
-              });
-            },
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomDayButton(
+                  day: day,
+                  isSelected: isSelected,
+                  onTap: () {
+                    setState(() {
+                      selectedDate = day;
+                    });
+                  },
+                ),
+              ),
+            ),
           );
-        },
+        }).toList(),
       ),
     );
   }

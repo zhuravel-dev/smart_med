@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'buttons/custom_back_button.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
+import 'package:smart_med/presentation/views/components/buttons/custom_back_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -27,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: Container(
         height: 62,
-        color: backgroundColor ?? Colors.grey[200],
+        color: backgroundColor,
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Stack(
           alignment: Alignment.center,
@@ -41,7 +42,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: AppColors.textDark,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

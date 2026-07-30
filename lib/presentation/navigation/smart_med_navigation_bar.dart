@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_med/presentation/config/theme/app_colors.dart';
 
 class SmartMedNavigationBar extends StatefulWidget {
   final int initialTabIndex;
@@ -13,7 +14,8 @@ class SmartMedNavigationBar extends StatefulWidget {
   });
 
   @override
-  State<SmartMedNavigationBar> createState() => SmartMedNavigationBarState();
+  State<SmartMedNavigationBar> createState() =>
+      SmartMedNavigationBarState();
 }
 
 class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
@@ -22,12 +24,36 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
   @override
   void initState() {
     super.initState();
+
     _currentIndex = widget.initialTabIndex;
+
+    widget.pageController.addListener(_pageListener);
+  }
+
+  @override
+  void dispose() {
+    widget.pageController.removeListener(_pageListener);
+    super.dispose();
+  }
+
+  void _pageListener() {
+    final page = widget.pageController.page?.round() ?? 0;
+
+    if (page != _currentIndex) {
+      setState(() {
+        _currentIndex = page;
+      });
+    }
   }
 
   void jumpToTab(int index) {
-    setState(() => _currentIndex = index);
-    widget.pageController.jumpToPage(index);
+    if (index == _currentIndex) return;
+
+    widget.pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -53,7 +79,6 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
             currentIndex: _currentIndex,
             onTap: jumpToTab,
           ),
-
           _NavItem(
             icon: SvgPicture.asset(
               'assets/icons/search.svg',
@@ -65,7 +90,6 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
             currentIndex: _currentIndex,
             onTap: jumpToTab,
           ),
-
           _NavItem(
             icon: SvgPicture.asset(
               'assets/icons/calendar.svg',
@@ -77,7 +101,6 @@ class SmartMedNavigationBarState extends State<SmartMedNavigationBar> {
             currentIndex: _currentIndex,
             onTap: jumpToTab,
           ),
-
           _NavItem(
             icon: SvgPicture.asset(
               'assets/icons/user.svg',
@@ -120,7 +143,9 @@ class _NavItem extends StatelessWidget {
         width: 64,
         height: 64,
         decoration: BoxDecoration(
-          color: _isActive ? const Color(0xFF3D7BF4) : const Color(0xFF1C1C1E),
+          color: _isActive
+              ? AppColors.navItemActive
+              : const Color(0xFF353537),
           shape: BoxShape.circle,
         ),
         child: Center(child: icon),
