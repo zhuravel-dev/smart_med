@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/config/theme/app_colors.dart';
-import 'package:smart_med/presentation/views/screens/appointment_screen.dart';
 import 'package:smart_med_images/smart_med_images.dart';
 import 'main_card/main_card.dart';
 
 class MainCardsRow extends StatelessWidget {
-  const MainCardsRow({super.key});
+  final VoidCallback? onOpenAppointment;
 
-  void _openAppointmentScreen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AppointmentScreen()));
-  }
+  const MainCardsRow({super.key, this.onOpenAppointment});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,7 @@ class MainCardsRow extends StatelessWidget {
           time: "10:20 AM - 4:40 PM",
           doctorsAvailable: 8,
           categoryImage: SmartMedImages.dentistry,
-          onTap: () => _openAppointmentScreen(context),
+          onTap: onOpenAppointment,
           doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
           additionalCount: 3,
         ),
@@ -34,7 +31,7 @@ class MainCardsRow extends StatelessWidget {
           time: "9:00 AM - 5:30 PM",
           doctorsAvailable: 7,
           categoryImage: SmartMedImages.surgery,
-          onTap: () => _openAppointmentScreen(context),
+          onTap: onOpenAppointment,
           doctorAvatars: SmartMedImages.defaultAvatarsSurgery,
           additionalCount: 2,
         ),
@@ -45,7 +42,7 @@ class MainCardsRow extends StatelessWidget {
           time: "10:20 AM - 4:40 PM",
           doctorsAvailable: 12,
           categoryImage: SmartMedImages.cardiology,
-          onTap: () => _openAppointmentScreen(context),
+          onTap: onOpenAppointment,
           doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
           additionalCount: 6,
         ),

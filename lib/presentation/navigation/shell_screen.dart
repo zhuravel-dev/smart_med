@@ -55,7 +55,16 @@ class _ShellScreenState extends State<ShellScreen> {
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              HomeScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
+              HomeScreen(
+                onScrollDirectionChanged: _onScrollDirectionChanged,
+                onOpenAppointment: () {
+                  _pageController.animateToPage(
+                    1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
               AppointmentScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
               HistoryScreen(onScrollDirectionChanged: _onScrollDirectionChanged),
               AccountScreen(onScrollDirectionChanged: _onScrollDirectionChanged),

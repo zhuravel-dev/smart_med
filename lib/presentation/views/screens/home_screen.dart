@@ -7,7 +7,9 @@ import 'package:smart_med/presentation/views/components/tags_row.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool>? onScrollDirectionChanged;
-  const HomeScreen({super.key, this.onScrollDirectionChanged});
+  final VoidCallback? onOpenAppointment;
+  const HomeScreen({super.key, this.onScrollDirectionChanged, this.onOpenAppointment});
+
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -56,7 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 24),
               TagsRow(),
               const SizedBox(height: 16),
-              MainCardsRow(),
+              MainCardsRow(
+                onOpenAppointment: widget.onOpenAppointment,
+              ),
               const SizedBox(height: 120),
             ],
           ),

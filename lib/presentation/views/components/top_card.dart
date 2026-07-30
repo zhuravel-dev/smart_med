@@ -7,6 +7,7 @@ import 'package:smart_med/presentation/views/components/top_card_types.dart';
 
 class TopCard extends StatelessWidget {
   final Doctor doctor;
+
   const TopCard({super.key, required this.doctor});
 
   @override
@@ -33,7 +34,7 @@ class TopCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Claim status',
                   style: TextStyle(
                     fontSize: 18,
@@ -53,28 +54,24 @@ class TopCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 2),
+
           Padding(
-            padding: const EdgeInsets.fromLTRB(18, 6, 2, 2),
+            padding: const EdgeInsets.fromLTRB(18, 6, 2, 12),
             child: Row(
               children: [
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 TopCardBadge(
                   title: 'Recovered Patients',
                   value: doctor.recoveredPatients,
                   type: TopCardType.filled,
                 ),
-                const SizedBox(width: 8),
-                TopCardBadge(
-                  title: 'In Care',
-                  value: doctor.inCare,
-                  type: TopCardType.outlined,
-                ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
+                TopCardBadge(title: 'In Care', value: doctor.inCare, type: TopCardType.outlined),
+                const SizedBox(width: 6),
                 TopCardBadge(title: 'Free', value: doctor.free, type: TopCardType.dashed),
               ],
             ),
           ),
-          const SizedBox(height: 24),
         ],
       ),
     );
@@ -83,8 +80,8 @@ class TopCard extends StatelessWidget {
 
 Widget buildDivider() {
   return Container(
-    width: 0.5,
+    width: 1,
     color: Colors.grey.shade400,
-    margin: const EdgeInsets.symmetric(horizontal: 2),
+    margin: const EdgeInsets.symmetric(horizontal: 1),
   );
 }
