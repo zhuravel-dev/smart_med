@@ -7,7 +7,6 @@ import 'package:smart_med/presentation/views/components/tags_row.dart';
 
 class HomeScreen extends StatefulWidget {
   final ValueChanged<bool>? onScrollDirectionChanged;
-
   const HomeScreen({super.key, this.onScrollDirectionChanged});
 
   @override
@@ -32,9 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
     final isScrollingDown = currentOffset > _lastScrollOffset;
-
     widget.onScrollDirectionChanged?.call(isScrollingDown);
-
     _lastScrollOffset = currentOffset;
   }
 

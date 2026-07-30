@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/infra/mocks/mock_visit_history.dart';
+import 'package:smart_med/presentation/views/components/calendar/custom_calendar.dart';
 import 'package:smart_med/presentation/views/components/visit_history_card.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+      /*  backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.blue),
@@ -52,7 +53,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             onPressed: () {},
             icon: const Icon(Icons.search, color: Colors.blue),
           ),
-        ],
+        ],*/
       ),
       body: SafeArea(
         child: NotificationListener<ScrollNotification>(
@@ -64,6 +65,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+                CustomCalendar(),
                 ...mockVisitHistory.map(
                   (visit) => Padding(
                     padding: const EdgeInsets.only(bottom: 16),

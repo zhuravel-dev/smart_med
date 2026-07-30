@@ -18,13 +18,13 @@ class BookAppointmentButton extends StatelessWidget {
       height: 70,
       child: ElevatedButton(
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
+          /*ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
                 '${selectedDay?.toString().split(' ')[0]} $selectedTime',
               ),
             ),
-          );
+          );*/
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,

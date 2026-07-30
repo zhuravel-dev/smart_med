@@ -9,7 +9,7 @@ class AppointmentCard extends StatefulWidget {
   const AppointmentCard({super.key});
 
   @override
-  _AppointmentCardState createState() => _AppointmentCardState();
+  State<AppointmentCard> createState() => _AppointmentCardState();
 }
 
 class _AppointmentCardState extends State<AppointmentCard> {
@@ -19,73 +19,55 @@ class _AppointmentCardState extends State<AppointmentCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
-      child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.38,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(48),
-            topRight: Radius.circular(48),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 20,
-              offset: const Offset(0, -2),
-            ),
-          ],
+    final height = MediaQuery.sizeOf(context).height;
+
+    return Container(
+      constraints: BoxConstraints(maxHeight: height * 0.48),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(48),
+          topRight: Radius.circular(48),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(.1),
+            blurRadius: 20,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: SafeArea(
+        top: false,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 20),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    selectAvailableSlotTextItem(),
-                    monthItem(),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 14),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: CustomRowOfDays(),
-              ),
-
-              const SizedBox(height: 10),
-
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: TimeTileRow(
-                  times: times,
-                  selectedTime: _selectedTime,
-                  onTimeSelected: (time) {
-                    setState(() {
-                      _selectedTime = time;
-                    });
-                  },
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [selectAvailableSlotTextItem(), monthItem()],
               ),
 
               const SizedBox(height: 18),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: BookAppointmentButton(),
+              const CustomRowOfDays(),
+
+              const SizedBox(height: 16),
+
+              TimeTileRow(
+                times: times,
+                selectedTime: _selectedTime,
+                onTimeSelected: (time) {
+                  setState(() {
+                    _selectedTime = time;
+                  });
+                },
               ),
+
+              const SizedBox(height: 24),
+
+              const BookAppointmentButton(),
             ],
           ),
         ),

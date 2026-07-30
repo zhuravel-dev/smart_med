@@ -223,3 +223,11 @@ Widget DoctorCardItem() {
     ),
   );
 }
+
+Widget buildDivider() {
+  return Container(
+    width: 0.5,
+    color: Colors.grey.shade400,
+    margin: const EdgeInsets.symmetric(horizontal: 2),
+  );
+}

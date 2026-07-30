@@ -28,7 +28,7 @@ class TopCardBadge extends StatelessWidget {
         Row(
           children: [
             BadgeDivider(height: 70),
-            const SizedBox(width: 4),
+            const SizedBox(width: 2),
             switch (type) {
               TopCardType.filled => SizedBox(
                 height: MediaQuery.of(context).size.height * 0.069,

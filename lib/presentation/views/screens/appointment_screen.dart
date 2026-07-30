@@ -18,25 +18,16 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   double _lastScrollOffset = 0;
 
   void _onScroll(ScrollNotification notification) {
-    if (notification is! ScrollUpdateNotification) {
-      return;
-    }
-
+    if (notification is! ScrollUpdateNotification) return;
     final currentOffset = notification.metrics.pixels;
-    if ((currentOffset - _lastScrollOffset).abs() < 5) {
-      return;
-    }
-
+    if ((currentOffset - _lastScrollOffset).abs() < 5) return;
     if (currentOffset <= 0) {
       widget.onScrollDirectionChanged?.call(false);
       _lastScrollOffset = currentOffset;
       return;
     }
-
     final isScrollingDown = currentOffset > _lastScrollOffset;
-
     widget.onScrollDirectionChanged?.call(isScrollingDown);
-
     _lastScrollOffset = currentOffset;
   }
 
@@ -45,26 +36,37 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        bottom: true,
-        child: NotificationListener<ScrollNotification>(
-          onNotification: (notification) {
-            _onScroll(notification);
-            return false;
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final width = constraints.maxWidth;
+            final height = constraints.maxHeight;
+            final horizontalPadding = width * 0.041;
+            final topSpacing = height * 0.010;
+            final headerSpacing = height * 0.025;
+            final sectionSpacing = height * 0.020;
+            final bottomSpacing = height * 0.140;
+
+            return NotificationListener<ScrollNotification>(
+              onNotification: (notification) {
+                _onScroll(notification);
+                return false;
+              },
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                children: [
+                  SizedBox(height: topSpacing),
+                  const HomeGreetingHeader(),
+                  SizedBox(height: headerSpacing),
+                  makeTitle(firstText: 'Find your doctor'),
+                  SizedBox(height: sectionSpacing),
+                  const TagsRow(),
+                  SizedBox(height: sectionSpacing),
+                  const ListOfDoctors(),
+                  SizedBox(height: bottomSpacing),
+                ],
+              ),
+            );
           },
-          child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-            children: [
-              const SizedBox(height: 8),
-              HomeGreetingHeader(),
-              const SizedBox(height: 20),
-              makeTitle(firstText: 'Find your doctor'),
-              const SizedBox(height: 16),
-              TagsRow(),
-              const SizedBox(height: 16),
-              ListOfDoctors(),
-              const SizedBox(height: 120),
-            ],
-          ),
         ),
       ),
     );

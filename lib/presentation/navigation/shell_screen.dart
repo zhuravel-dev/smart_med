@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/navigation/app_router.dart';
 import 'package:smart_med/presentation/views/screens/account_screen.dart';
 import 'package:smart_med/presentation/views/screens/home_screen.dart';
-import 'package:smart_med/presentation/views/screens/find_your_doctor_screen.dart';
+import 'package:smart_med/presentation/views/screens/appointment_screen.dart';
 import 'package:smart_med/presentation/views/screens/history_screen.dart';
 import 'smart_med_navigation_bar.dart';
 
