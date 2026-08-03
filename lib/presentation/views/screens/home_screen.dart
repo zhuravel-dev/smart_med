@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/config/theme/app_colors.dart';
+import 'package:smart_med/presentation/views/components/custom_app_bar/greeting_header.dart';
 import 'package:smart_med/presentation/views/components/home_greeting_header.dart';
 import 'package:smart_med/presentation/views/components/main_cards_row.dart';
 import 'package:smart_med/presentation/views/components/make_appointment_title.dart';
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
             children: [
               const SizedBox(height: 8),
-              HomeGreetingHeader(),
+              GreetingHeader(type: GreetingHeaderType.main),
               const SizedBox(height: 20),
               makeTitle(firstText: 'Make an', secondText: 'Appointment'),
               const SizedBox(height: 24),

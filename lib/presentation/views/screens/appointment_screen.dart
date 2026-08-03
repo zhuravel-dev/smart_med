@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_med/presentation/config/theme/app_colors.dart';
+import 'package:smart_med/presentation/views/components/custom_app_bar/greeting_header.dart';
 import 'package:smart_med/presentation/views/components/home_greeting_header.dart';
 import 'package:smart_med/presentation/views/components/make_appointment_title.dart';
 import 'package:smart_med/presentation/views/components/tags_row.dart';
@@ -55,7 +56,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 children: [
                   SizedBox(height: topSpacing),
-                  const HomeGreetingHeader(),
+                  const GreetingHeader(type: GreetingHeaderType.main),
                   SizedBox(height: headerSpacing),
                   makeTitle(firstText: 'Find your doctor'),
                   SizedBox(height: sectionSpacing),
