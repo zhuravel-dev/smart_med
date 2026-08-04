@@ -45,9 +45,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
     super.initState();
 
     _selectedDay = widget.selectedDay ?? DateTime(2026, 8, 25);
-    _weekStart = _selectedDay.subtract(
-      Duration(days: _selectedDay.weekday % 7),
-    );
+    _weekStart = _selectedDay.subtract(Duration(days: _selectedDay.weekday % 7));
   }
 
   void _nextWeek() {
@@ -143,8 +141,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
                               boxShadow: selected
                                   ? [
                                       BoxShadow(
-                                        color: AppColors.primary.withOpacity(0.45),
-                                        blurRadius: 20,
+                                        color: AppColors.primary.withOpacity(0.25),
+                                        blurRadius: 10,
                                         spreadRadius: 1,
                                         offset: const Offset(0, 10),
                                       ),

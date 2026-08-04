@@ -15,12 +15,7 @@ class AppRouter {
   static const String _signUp = 'signUp';
   static const String _payment = 'payment';
 
-  static const List<String> shellTabs = [
-    "home",
-    "appointments",
-    "history",
-    "account",
-  ];
+  static const List<String> shellTabs = ["home", "appointments", "history", "account"];
 
   // routes
   static String onBoarding() => '/$_onBoarding';
@@ -36,8 +31,8 @@ class AppRouter {
   static String account() => '/?tab=${shellTabs[3]}';
 
   static BeamerDelegate buildRouterDelegate() {
-    final String initialRoute = AppRouter.home();
-    //final String initialRoute = AppRouter.onBoarding();
+    //final String initialRoute = AppRouter.home();
+    final String initialRoute = AppRouter.onBoarding();
     final routerDelegate = BeamerDelegate(
       initialPath: initialRoute,
       locationBuilder: RoutesLocationBuilder(
