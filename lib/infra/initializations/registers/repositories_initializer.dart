@@ -1,9 +1,13 @@
 import 'package:get_it/get_it.dart';
+import 'package:smart_med/domain/irepositories/icategory_repository.dart';
 import 'package:smart_med/domain/irepositories/iuser_repository.dart';
-import 'package:smart_med/infra/data/user_repository.dart';
+import 'package:smart_med/infra/data/repositories/category_repository_impl.dart';
+import 'package:smart_med/infra/data/repositories/user_repository_impl.dart';
 
-abstract class RepositoriesInitializer {
+abstract final class RepositoriesInitializer {
   static void initialize() {
-    GetIt.I.registerSingleton<IUserRepository>(UserRepository());
+    final getIt = GetIt.I;
+    getIt.registerLazySingleton<IUserRepository>(() => UserRepository());
+    getIt.registerLazySingleton<ICategoryRepository>(() => CategoryRepository());
   }
 }

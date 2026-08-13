@@ -82,14 +82,7 @@ class VisitHistoryCard extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.primary, width: 1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Icon(Icons.save, size: 26, color: AppColors.primary),
-              ),
+              const Icon(Icons.save, size: 26, color: AppColors.primary),
               const SizedBox(width: 12),
               const Expanded(
                 child: Text(
