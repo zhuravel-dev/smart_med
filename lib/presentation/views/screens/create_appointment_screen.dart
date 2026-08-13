@@ -15,7 +15,7 @@ class CreateAppointmentScreen extends StatelessWidget {
 
     final profileHeight = screenHeight * 0.56;
     final overlap = screenHeight * 0.12;
-    final topCardHeight = (profileHeight - overlap) * 1.45;
+    final topCardHeight = (profileHeight - overlap) * 1.42;
 
     return Scaffold(
       body: Stack(

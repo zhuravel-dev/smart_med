@@ -13,6 +13,8 @@ class TopCardBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const badgeHeight = 56.0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,7 +33,7 @@ class TopCardBadge extends StatelessWidget {
             const SizedBox(width: 2),
             switch (type) {
               TopCardType.filled => SizedBox(
-                height: MediaQuery.of(context).size.height * 0.069,
+                height: badgeHeight,
                 width: MediaQuery.of(context).size.height * 0.2,
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 24),

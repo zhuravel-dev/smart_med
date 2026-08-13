@@ -25,54 +25,56 @@ class TopCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 26),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(25, 0, 32, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Claim status',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+      child: Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 26),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(26, 0, 26, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Claim status',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
-                ),
-                Text(
-                  'View all',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textMedium,
+                  const Spacer(),
+                  Text(
+                    'View all',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textMedium,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 2),
+            const SizedBox(height: 2),
 
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 6, 2, 12),
-            child: Row(
-              children: [
-                const SizedBox(width: 6),
-                TopCardBadge(
-                  title: 'Recovered Patients',
-                  value: doctor.recoveredPatients,
-                  type: TopCardType.filled,
-                ),
-                const SizedBox(width: 6),
-                TopCardBadge(title: 'In Care', value: doctor.inCare, type: TopCardType.outlined),
-                const SizedBox(width: 6),
-                TopCardBadge(title: 'Free', value: doctor.free, type: TopCardType.dashed),
-              ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(26, 6, 26, 6),
+              child: Row(
+                children: [
+                  TopCardBadge(
+                    title: 'Recovered Patients',
+                    value: doctor.recoveredPatients,
+                    type: TopCardType.filled,
+                  ),
+                  const Spacer(),
+                  TopCardBadge(title: 'In Care', value: doctor.inCare, type: TopCardType.outlined),
+                  const Spacer(),
+                  TopCardBadge(title: 'Free', value: doctor.free, type: TopCardType.dashed),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -40,7 +40,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
       child: SafeArea(
         top: false,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+          padding: const EdgeInsets.fromLTRB(20, 26, 20, 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,9 +50,7 @@ class _AppointmentCardState extends State<AppointmentCard> {
               ),
 
               const SizedBox(height: 18),
-
               const CustomRowOfDays(),
-
               const SizedBox(height: 16),
 
               TimeTileRow(
@@ -66,7 +64,6 @@ class _AppointmentCardState extends State<AppointmentCard> {
               ),
 
               const SizedBox(height: 24),
-
               const BookAppointmentButton(),
             ],
           ),

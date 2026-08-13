@@ -35,7 +35,7 @@ class DoctorCardSmall extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.07),
