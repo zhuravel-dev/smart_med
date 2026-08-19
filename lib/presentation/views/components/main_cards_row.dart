@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:smart_med/domain/entities/category_summary_model.dart';
 import 'package:smart_med/presentation/config/theme/app_colors.dart';
-import 'package:smart_med_images/smart_med_images.dart';
 import 'main_card/main_card.dart';
 
 class MainCardsRow extends StatelessWidget {
+  final List<CategorySummary> categories;
   final VoidCallback? onOpenAppointment;
 
-  const MainCardsRow({super.key, this.onOpenAppointment});
+  const MainCardsRow({super.key, required this.categories, this.onOpenAppointment});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: 4),
-        MainCard(
-          color: AppColors.primary,
-          doctorType: "Dentistry",
-          time: "10:20 AM - 4:40 PM",
-          doctorsAvailable: 8,
-          categoryImage: SmartMedImages.dentistry,
-          onTap: onOpenAppointment,
-          doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
-          additionalCount: 3,
-        ),
-        const SizedBox(height: 8),
-        MainCard(
-          color: Colors.white,
-          isLight: true,
-          doctorType: "Surgery",
-          time: "9:00 AM - 5:30 PM",
-          doctorsAvailable: 7,
-          categoryImage: SmartMedImages.surgery,
-          onTap: onOpenAppointment,
-          doctorAvatars: SmartMedImages.defaultAvatarsSurgery,
-          additionalCount: 2,
-        ),
-        const SizedBox(height: 8),
-        MainCard(
-          color: const Color(0xff2F6BFF),
-          doctorType: "Cardiology",
-          time: "10:20 AM - 4:40 PM",
-          doctorsAvailable: 12,
-          categoryImage: SmartMedImages.cardiology,
-          onTap: onOpenAppointment,
-          doctorAvatars: SmartMedImages.defaultAvatarsDentistry,
-          additionalCount: 6,
+        ...List.generate(
+          categories.length,
+          (index) => Padding(
+            padding: EdgeInsets.only(top: index == 0 ? 0 : 8),
+            child: _buildCard(categories[index], index),
+          ),
         ),
       ],
+    );
+  }
+
+  Widget _buildCard(CategorySummary category, int index) {
+    final isLight = index.isOdd;
+
+    return MainCard(
+      color: isLight ? Colors.white : AppColors.primary,
+      isLight: isLight,
+      doctorType: category.doctorType,
+      time: category.workingHours,
+      doctorsAvailable: category.doctorsAvailable,
+      categoryImage: category.categoryImage,
+      doctorAvatars: category.doctorAvatars,
+      additionalCount: category.additionalCount,
+      onTap: onOpenAppointment,
     );
   }
 }

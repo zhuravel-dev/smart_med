@@ -12,8 +12,7 @@ class UserRepository implements IUserRepository {
     if (result.hasData && result.data != null) {
       return result.data!;
     } else {
-      throw result.exception ??
-          Exception('Error in UserRepositoryImpl getUser()');
+      throw result.exception ?? Exception('Error in UserRepositoryImpl getUser()');
     }
   }
 
